@@ -1,0 +1,10 @@
+<md-content layout-padding>
+    <p class="md-headline">User Management</p>
+    <div md-colors="::{background: 'primary-500'}">
+    <md-input-container md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+        <md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">search</md-icon>
+        <input ng-model="$ctrl.search" placeholder="Search" ng-change="$ctrl.onSearchChange()" ng-model-options="{ debounce: 250 }" type="text" md-colors="::{color: 'accent-A100'}" aria-label="Search">
+    </md-input-container>
+    </div>
+    <!--<div kendo-grid="$ctrl.grid" options="$ctrl.gridOptions"></div>-->
+</md-content>

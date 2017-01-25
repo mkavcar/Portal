@@ -1,0 +1,64 @@
+<md-dialog flex="40">
+
+	<!-- Header -->
+	<md-toolbar class="md-accent md-hue-3">
+		<div class="md-toolbar-tools">
+			<h2>{{ ::ctrl.feed.name }}</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="ctrl.cancel()">
+				<md-icon class="material-icons">close</md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+
+	<!-- Content -->
+	<md-dialog-content>
+		<md-list flex>
+			<md-list-item class="md-2-line">
+				<img class="md-avatar" ng-src="{{::ctrl.feed.imageURL}}" style="width: 87px;height: 48px!important;-webkit-clip-path: inset(3%);clip-path: inset(3%);border-radius:0;">
+				<div class="md-list-item-text" layout="column">
+					<h3>{{ ::ctrl.feed.name }}</h3>
+					<p>{{ ::ctrl.feed.catName0 }}</p>
+				</div>
+			</md-list-item>
+			<md-list-item class="md-long-text">
+				<div class="md-list-item-text" layout="column">
+					<p>{{ ::ctrl.feed.shortDescription }}</p>
+				</div>
+			</md-list-item>
+		</md-list>
+		<md-divider></md-divider>
+		<div layout="row">
+			<div flex>
+				<div layout-padding>
+					<label class="md-body-1">ctrl.feed ID</label>
+					<div>{{ ::ctrl.feed.id }}</div>
+				</div>
+				<div layout-padding>
+					<label class="md-body-1">Version</label>
+					<div>{{ ::ctrl.feed.version }}</div>
+				</div>
+				<div layout-padding>
+					<label class="md-body-1">Release Date</label>
+					<div>{{ ::ctrl.feed.releaseDate | date:'mediumDate' }}</div>
+				</div>
+			</div>
+			<div flex>
+				<div layout-padding>
+					<label class="md-body-1">Authentication Type</label>
+					<div>{{ ::ctrl.feed.authType }}</div>
+				</div>
+				<div layout-padding>
+					<label class="md-body-1">Countries</label>
+					<div>{{ ::ctrl.feed.country }}</div>
+				</div>
+			</div>
+		</div>
+	</md-dialog-content>
+
+	<!-- Actions -->
+	<md-dialog-actions layout="row">
+		<md-button class="md-raised" ng-click="ctrl.cancel()">Close</md-button>
+		<md-button class="md-raised md-accent md-hue-3" ng-click="ctrl.select()">Select</md-button>
+	</md-dialog-actions>
+</md-dialog>

@@ -1,0 +1,35 @@
+<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+	<div class="md-whiteframe-2dp dap-nopadding">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<h2>Documents Library</h2>
+				<span flex></span>
+				<md-button ng-click="$ctrl.add($event)" ng-if="$ctrl.isCreator">
+					<md-icon class="material-icons dap-mgr-6">add</md-icon>Add Document
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<!-- Filter -->
+		<dap-search sort-fields="$ctrl.sortFields" default-sort="name asc" on-sort="$ctrl.sort(sort)" on-search="$ctrl.search(search)"></dap-search>
+
+		<!-- Content -->
+		<md-content ng-if="$ctrl.documents.length" layout-xs="column" layout="row" layout-align="left" layout-wrap style="padding:8px">
+			<md-card ng-repeat="item in $ctrl.documents track by item.id" style="width:250px;" class="dap-viz-card">
+				<md-card-header ng-click="$ctrl.view(item, $event)" class="dap-button">
+					<md-card-header-text class="dap-center">
+						<span class="md-title"><md-icon class="material-icons dap-mgr-6">description</md-icon>{{::item.name}}</span>
+						<span class="md-subhead" style="font-size: 0.7em;font-weight: bold;padding-left: 30px;">{{::item.createdDate | date:'short'}}</span>
+					</md-card-header-text>
+				</md-card-header>
+				<md-card-content class="dap-button dap-center" ng-click="$ctrl.view(item, $event)">
+					<p>{{::item.description}}</p>
+				</md-card-content>
+			</md-card>
+		</md-content>
+		<dap-list-loading flex list="$ctrl.documents"></dap-list-loading>
+
+	</div>
+</md-content>

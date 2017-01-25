@@ -1,0 +1,33 @@
+<!-- Browser Warning -->
+<div class="dap-warning dap-browser-warning" ng-if=":: $root.isLegacyBrowser">
+	For an optimal viewing experience please only use the latest version of <a href="http://www.google.com/chrome" target="_blank">Google Chrome</a>	or <a href="http://www.apple.com/safari" target="_blank">Apple Safari</a>!
+</div>
+
+<!-- Loader -->
+<div ng-if="$root.loading" class="dap-page-spinner">
+	<div layout="row">
+		<md-progress-circular flex class="md-accent md-hue-3" md-mode="indeterminate"></md-progress-circular>
+		<div flex style="margin: auto;margin-left: 20px;" md-colors="::{'color': 'background-800'}">Loading...</div>
+	</div>
+</div>
+
+<!-- App -->
+<div layout="column" flex ng-if="!$root.loading">
+
+	<!-- Header -->
+	<dap-header></dap-header>
+
+	<div layout="row" flex>
+
+		<!-- Side Nav -->
+		<div layout="column" ng-if="$root.auth.isLoggedIn()">
+			<dap-main-nav></dap-main-nav>
+		</div>
+
+		<!-- Content -->
+		<md-content layout="column" flex id="content" md-colors="::{'background-color': 'background-200'}">
+			<ng-outlet></ng-outlet>
+			<dap-footer></dap-footer>
+		</md-content>
+	</div>
+</div>

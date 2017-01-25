@@ -1,0 +1,140 @@
+<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+	<div class="md-whiteframe-2dp dap-nopadding">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<h2>
+					<span>Query ROI</span>
+				</h2>
+				<span flex></span>
+				<md-button aria-label="Info" ng-click="$ctrl.info($event)" class="md-icon-button">
+					<md-tooltip md-direction="top">more details</md-tooltip>
+					<md-icon class="material-icons">info</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<!-- Parameters -->
+		<md-content flex md-colors="::{background: 'primary-300'}" style="padding: 16px 8px;">
+			<form novalidate name="$ctrl.searchForm">
+				<div layout-gt-sm="row" flex>
+					<div layout="column" flex>
+						<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+							<label>Category</label>
+							<md-select ng-model="$ctrl.category" placeholder="Category" required ng-change="$ctrl.onCatChange()">
+								<md-option value="-1">Category Agnostic</md-option>
+								<md-option ng-repeat="item in $ctrl.categories" ng-value="item.id">{{::item.name}}</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+							<label>Subcategory</label>
+							<md-select ng-model="$ctrl.subcategory" placeholder="Subcategory" required multiple ng-disabled="!$ctrl.category" ng-change="$ctrl.onSelectChange('subcategory')">
+								<md-option ng-value="-1">Subcategory Agnostic</md-option>
+								<md-option ng-repeat="item in $ctrl.subcategories | filter: $ctrl.filterSubCat" ng-value="item.id">{{::item.name}}</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+					<div layout="column" flex>
+						<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+							<label>Country</label>
+							<md-select ng-model="$ctrl.country" placeholder="Country" required multiple ng-change="$ctrl.onSelectChange('country')">
+								<md-option ng-value="-1">Country Agnostic</md-option>
+								<md-option ng-repeat="item in $ctrl.countries" ng-value="item.id">{{::item.name}}</md-option>
+							</md-select>
+						</md-input-container>
+						<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+							<label>Communications Channel</label>
+							<md-select ng-model="$ctrl.channel" placeholder="Communications Channel" required multiple ng-change="$ctrl.onSelectChange('channel')">
+								<md-option ng-value="-2">All</md-option>
+								<md-option ng-value="-1">Communication Channel Agnostic</md-option>
+								<md-option ng-repeat="item in $ctrl.channels" ng-value="item.id">{{::item.name}}</md-option>
+							</md-select>
+						</md-input-container>
+					</div>
+					<md-button class="md-raised md-accent md-hue-3" style="margin: 16px 8px auto 8px;" ng-disabled="$ctrl.searchForm.$invalid"
+						ng-click="$ctrl.bind()">
+						<md-icon class="material-icons dap-mgr-6">sync</md-icon>submit
+					</md-button>
+				</div>
+			</form>
+		</md-content>
+
+		<!-- Filter -->
+		<md-content flex md-colors="::{background: 'primary-400'}" style="padding: 0 8px;">
+			<md-input-container md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+				<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">search</md-icon>
+				<input ng-model="$ctrl.search" placeholder="Search" ng-model-options="{ debounce: 200 }" type="text" md-colors="::{color: 'accent-A100'}"
+					aria-label="Search" ng-change="$ctrl.filter()">
+			</md-input-container>
+		</md-content>
+
+		<!-- Content -->
+		<md-content flex>
+			<div layout="row" md-colors="::{background: 'background-400'}" ng-if="$ctrl.data">
+				<div flex style="padding:20px" ng-if="$ctrl.request.categories.toString() !== '-1'">
+					<label>Category</label>
+				</div>
+				<div flex style="padding:20px" ng-if="$ctrl.request.subcategories.toString() !== '-1'">
+					<label>SubCategory</label>
+				</div>
+				<div flex style="padding:20px" ng-if="$ctrl.request.countries.toString() !== '-1'">
+					<label>Country</label>
+				</div>
+				<div flex style="padding:20px" ng-if="$ctrl.request.channels.toString() !== '-1'">
+					<label>Communication Channel</label>
+				</div>
+				<div style="width:100px;padding:20px" class="dap-vertalign" align="right">
+					<label># of Samples</label>
+				</div>
+				<div style="width:100px;padding:20px" class="dap-vertalign" align="right">
+					<label>Average ROI</label>
+				</div>
+				<div style="width:100px;padding:20px" class="dap-vertalign" align="right">
+					<label>Median ROI</label>
+				</div>
+				<div style="width:140px;padding:20px" class="dap-vertalign" align="right">
+					<label>Trimmed Mean ROI</label>
+				</div>
+				<div style="width:100px;padding:20px" class="dap-vertalign" align="right">
+					<label>Predictive ROI</label>
+				</div>
+			</div>
+			<md-divider></md-divider>
+			<div ng-repeat="item in $ctrl.data">
+				<div flex layout="row">
+					<div flex style="padding:10px 20px;word-break:break-all;" ng-if="$ctrl.request.categories.toString() !== '-1'">
+						{{:: item.category }}
+					</div>
+					<div flex style="padding:10px 20px;word-break:break-all;" ng-if="$ctrl.request.subcategories.toString() !== '-1'">
+						{{:: item.subategory }}
+					</div>
+					<div flex style="padding:10px 20px;word-break:break-all;" ng-if="$ctrl.request.countries.toString() !== '-1'">
+						{{:: item.country }}
+					</div>
+					<div flex style="padding:10px 20px;word-break:break-all;" ng-if="$ctrl.request.channels.toString() !== '-1'">
+						{{:: item.communicationChannel }}
+					</div>
+					<div style="width:100px;padding:10px 20px;" align="right">
+						{{:: item.numberOfSamples }}
+					</div>
+					<div style="width:100px;padding:10px 20px;" align="right">
+						{{:: item.averageROI }}
+					</div>
+					<div style="width:100px;padding:10px 20px;" align="right">
+						{{:: item.medianROI }}
+					</div>
+					<div style="width:140px;padding:10px 20px;" align="right">
+						{{:: item.trimmedMeanROI }}
+					</div>
+					<div style="width:100px;padding:10px 20px;" align="right">
+						{{:: item.predictiveROI }}
+					</div>
+				</div>
+				<md-divider ng-if="!$last"></md-divider>
+			</div>
+			<dap-list-loading flex list="$ctrl.data"></dap-list-loading>
+		</md-content>
+	</div>
+
+</md-content>

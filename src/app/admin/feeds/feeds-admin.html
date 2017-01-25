@@ -1,0 +1,45 @@
+<div layout="row" flex>
+  <md-sidenav
+      class="md-sidenav-left"
+      md-component-id="left"
+      md-is-locked-open="$mdMedia('gt-sm')"
+      md-disable-backdrop
+      md-whiteframe="4">    
+    
+      <md-list ng-cloak style="padding-top: 0;">
+        <md-subheader class="md-no-sticky">Manage Site</md-subheader>
+        <md-list-item class="noright mrgLt15">
+          <p>Email Templates</p>
+        </md-list-item>
+        <md-list-item class="noright mrgLt15">
+          <p>Site Messages</p>
+        </md-list-item>
+        <md-subheader class="md-no-sticky">Manage Data Feeds</md-subheader>
+        <md-list-item class="noright mrgLt15">
+          <p>Data Feeds Manager</p>
+        </md-list-item>
+        <md-list-item class="noright mrgLt15">
+          <p>Data Feeds Integration</p>
+        </md-list-item>
+        <md-list-item class="noright mrgLt15">
+          <p>Data Access Manager</p>
+        </md-list-item>
+        <md-list-item class="noright mrgLt15">
+          <p>Query Manager</p>
+        </md-list-item>        
+        <md-subheader class="md-no-sticky">Manage Users</md-subheader>
+        <md-list-item class="noright mrgLt15" ng-click="$ctrl.navigate('Users')">
+          <p>Manage Users</p>
+        </md-list-item>
+        <md-subheader class="md-no-sticky">Monitor</md-subheader>
+        <md-list-item class="noright mrgLt15" ng-click="$ctrl.navigate('Usage')">
+          <p>Usage</p>
+        </md-list-item>        
+      </md-list>      
+    
+  </md-sidenav>
+
+  <md-content flex>  
+    <ng-outlet></ng-outlet>
+  </md-content>
+</div>

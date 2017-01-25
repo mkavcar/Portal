@@ -1,0 +1,51 @@
+<md-dialog flex="50">
+	<form novalidate name="ctrl.dataForm">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<h2>Add Notification</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="ctrl.close()">
+					<md-icon class="material-icons">clear</md-icon>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<!-- Content -->
+		<md-dialog-content>
+			<div class="md-dialog-content" layout="column">
+				<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+					<label>User ID</label>
+					<input ng-model="ctrl.notification.userId" name="userId" type="email" required />
+					<div ng-messages="ctrl.dataForm.userId.$error">
+						<ng-message when="required">This field is required</ng-message>
+					</div>
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+					<label>Title</label>
+					<input ng-model="ctrl.notification.title" name="title" required />
+					<div ng-messages="ctrl.dataForm.title.$error">
+						<ng-message when="required">This field is required</ng-message>
+					</div>
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+					<label>Message</label>
+					<textarea ng-model="ctrl.notification.message" name="message" rows="4" style="overflow: inherit;max-height: 200px!important;"
+						required md-maxlength="4000"></textarea>
+					<div ng-messages="ctrl.dataForm.message.$error">
+						<ng-message when="required">This field is required</ng-message>
+					</div>
+				</md-input-container>
+			</div>
+		</md-dialog-content>
+
+		<!-- Actions -->
+		<md-dialog-actions layout="row">
+			<md-button class="md-raised" ng-click="ctrl.close()">Cancel</md-button>
+			<md-button class="md-raised md-accent md-hue-3" ng-click="ctrl.submit()" ng-disabled="ctrl.dataForm.$invalid">
+				<md-icon class="material-icons dap-mgr-6">send</md-icon>Submit
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

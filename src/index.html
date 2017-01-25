@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html ng-app="dap.app">
+
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<base href="/web/">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+	<link href="bower_components/angular-material/angular-material.min.css" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="content/style.css" rel="stylesheet" type="text/css" />
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="DAP App Portal">
+	<meta name="viewport" content="initial-scale=1" />
+	<link rel="icon" type="image/png" href="content/images/groupm_favicon.png">
+	<link rel="apple-touch-icon" href="content/images/logo_phone_152.png" />
+	<title>DAP App Portal</title>
+</head>
+
+<body layout="column" md-colors="::{'background-color': 'background-200'}">
+	<app layout="column"></app>
+	<!-- IE required polyfills, in this exact order -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/lodash/dist/lodash.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+	<script src="bower_components/angular-component-router/angular_1_router.js"></script>
+	<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+	<script src="bower_components/angular-material/angular-material.min.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+	<script src="bower_components/chartjs/dist/Chart.bundle.min.js"></script>
+	<script src="bower_components/angular-chart/dist/angular-chart.min.js"></script>
+
+	<script src="app/app.module.js"></script>
+	<script src="app/admin/app/app-admin.module.js"></script>
+	<script src="app/admin/feeds/feeds-admin.module.js"></script>
+	<script src="app/core/core.module.js"></script>
+	<script src="app/feeds/feeds.module.js"></script>
+	<script src="app/visualizations/viz.module.js"></script>
+	<script src="app/documents/documents.module.js"></script>
+	<script src="app/ccr/ccr.module.js"></script>
+	<script src="app/roi/roi.module.js"></script>
+	<script src="app/datamart/datamart.module.js"></script>
+	<script src="app/app.constants.js"></script>
+
+	<script src="app/app.component.js"></script>
+
+	<script src="app/core/services/auth.service.js"></script>
+	<script src="app/core/services/token.service.js"></script>
+	<script src="app/core/services/search.service.js"></script>
+	<script src="app/core/services/util.service.js"></script>
+	<script src="app/core/services/metadata.service.js"></script>
+	<script src="app/core/services/menu.service.js"></script>
+	<script src="app/core/services/feedback.service.js"></script>
+	<script src="app/core/services/audit.service.js"></script>
+	<script src="app/core/services/notification.service.js"></script>
+	<script src="app/core/components/header.component.js"></script>
+	<script src="app/core/components/login-button.component.js"></script>
+	<script src="app/core/components/home.component.js"></script>
+	<script src="app/core/components/notifications.component.js"></script>
+	<script src="app/core/components/help-button.component.js"></script>
+	<script src="app/core/services/exception.service.js"></script>
+	<script src="app/core/services/log.service.js"></script>
+	<script src="app/core/services/http-requestid.service.js"></script>
+	<script src="app/core/components/footer.component.js"></script>
+	<script src="app/core/services/http-token.service.js"></script>
+	<script src="app/core/components/main-nav.component.js"></script>
+	<script src="app/core/components/splash.component.js"></script>
+	<script src="app/core/components/access-denied.component.js"></script>
+	<script src="app/core/components/list-loading.component.js"></script>
+	<script src="app/core/components/search.component.js"></script>
+
+	<script src="app/admin/feeds/feeds-admin.component.js"></script>
+	<script src="app/admin/feeds/users/user.service.js"></script>
+	<script src="app/admin/feeds/users/user.component.js"></script>
+	<script src="app/admin/feeds/usage/usage.service.js"></script>
+	<script src="app/admin/feeds/usage/usage.component.js"></script>
+
+	<script src="app/admin/app/app-admin.component.js"></script>
+	<script src="app/admin/app/users/users.component.js"></script>
+	<script src="app/admin/app/users/manage-users.component.js"></script>
+	<script src="app/admin/app/menu/menu.component.js"></script>
+	<script src="app/admin/app/menu/manage-menu.component.js"></script>
+	<script src="app/admin/app/feedback/feedback.component.js"></script>
+	<script src="app/admin/app/notifications/notifications.component.js"></script>
+	<script src="app/admin/app/app-admin.service.js"></script>
+
+	<script src="app/feeds/feeds.service.js"></script>
+	<script src="app/feeds/feeds.component.js"></script>
+	<script src="app/feeds/feeds.constants.js"></script>
+
+	<script src="app/visualizations/viz.service.js"></script>
+	<script src="app/visualizations/notes.component.js"></script>
+	<script src="app/visualizations/myviz.component.js"></script>
+	<script src="app/visualizations/notes.service.js"></script>
+	<script src="app/visualizations/viz.constants.js"></script>
+	<script src="app/visualizations/manage-viz.component.js"></script>
+	<script src="app/visualizations/share-viz.component.js"></script>
+	<script src="app/visualizations/viz-dashboard.component.js"></script>
+	<script src="app/visualizations/auditlog.component.js"></script>
+	<script src="app/visualizations/custom-color.component.js"></script>
+
+	<script src="app/documents/documents.constants.js"></script>
+	<script src="app/documents/documents.service.js"></script>
+	<script src="app/documents/documents.component.js"></script>
+
+	<script src="app/ccr/ccr.component.js"></script>
+	<script src="app/ccr/ccr-reports.component.js"></script>
+	<script src="app/ccr/ccr-dashboards.component.js"></script>
+	<script src="app/ccr/ccr-support.component.js"></script>
+	<script src="app/ccr/ccr-dashboard-view.component.js"></script>
+
+	<script src="app/roi/roi.constants.js"></script>
+	<script src="app/roi/roi.service.js"></script>
+	<script src="app/roi/roi.component.js"></script>
+	<script src="app/roi/roi-dashboard.component.js"></script>
+	<script src="app/roi/roi-query.component.js"></script>
+	<script src="app/roi/roi-upload.component.js"></script>
+
+	<script src="app/datamart/datamart.constants.js"></script>
+	<script src="app/datamart/datamart.service.js"></script>
+	<script src="app/datamart/datamart.component.js"></script>
+</body>
+
+</html>

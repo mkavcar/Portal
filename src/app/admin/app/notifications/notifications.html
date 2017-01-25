@@ -1,0 +1,71 @@
+<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+	<div class="md-whiteframe-2dp dap-nopadding">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<h2>Notifications</h2>
+				<span flex></span>
+				<md-button ng-click="$ctrl.add($event)">
+					<md-icon class="material-icons dap-mgr-6">add</md-icon>Add Notification
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<!-- Filter -->
+		<md-content flex md-colors="::{background: 'primary-400'}" style="padding: 0 8px;">
+			<md-input-container md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+				<md-icon class="material-icons md-accent">search</md-icon>
+				<input ng-model="$ctrl.search" placeholder="Search" ng-model-options="{ debounce: 100 }" type="text" md-colors="::{color: 'accent-A100'}"
+					aria-label="Search">
+			</md-input-container>
+		</md-content>
+
+		<!-- Content -->
+		<md-content flex>
+			<div layout="row" md-colors="::{background: 'background-400'}">
+				<div style="padding:20px;width:130px">
+					<label>Created Date</label>
+				</div>
+				<div flex="25" style="padding:20px">
+					<label>UserID</label>
+				</div>
+				<div flex style="padding:20px">
+					<label>Message</label>
+				</div>
+				<div flex="10" align="center" style="padding:20px">
+					<label>Read</label>
+				</div>
+				<div flex="10" align="center" style="padding:20px">
+					<label>Delete</label>
+				</div>
+			</div>
+			<md-divider></md-divider>
+			<div ng-repeat="item in $ctrl.data | filter: $ctrl.filter as filteredList track by item.id">
+				<div flex layout="row">
+					<div style="padding:10px 20px;margin:auto;width:130px">
+						{{:: item.createdDate | date:'short' }}
+					</div>
+					<div flex="25" style="padding:10px 20px;margin:auto;word-break:break-all;">
+						{{:: item.userId }}
+					</div>
+					<div flex style="padding:10px 20px;margin:auto;word-break:break-all;">
+						<div md-colors="::{color: 'accent-A400'}">{{:: item.title }}</div>
+						{{:: item.message }}
+					</div>
+					<div flex="10" align="center" class="dap-vertalign">
+						<md-icon class="material-icons">{{:: item.isRead ? 'check_box' : 'check_box_outline_blank' }}</md-icon>
+					</div>
+					<div flex="10" align="center" class="dap-vertalign">
+						<md-button class="md-icon-button" ng-click="$ctrl.remove(item, $event)" style="margin:0">
+							<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">delete</md-icon>
+						</md-button>
+					</div>
+				</div>
+				<md-divider ng-if="!$last"></md-divider>
+			</div>
+			<dap-list-loading flex list="$ctrl.data" filteredlist="filteredList"></dap-list-loading>
+		</md-content>
+	</div>
+
+</md-content>

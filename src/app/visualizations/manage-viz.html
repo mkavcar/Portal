@@ -1,0 +1,93 @@
+<form novalidate name="$ctrl.vizForm">
+
+	<!-- Header -->
+	<md-toolbar class="md-accent md-hue-3">
+		<div class="md-toolbar-tools">
+			<h2>{{ ($ctrl.isUpdate) ? 'Edit Visual' : 'Add Visual' }}</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="$ctrl.close()">
+				<md-icon class="material-icons">clear</md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+
+	<!-- Warning -->
+	<div layout="row" ng-if="$ctrl.visual.authorizedUsers" class="dap-warning" style="padding-left: 24px;">
+		<md-icon class="material-icons" style="color: darkorange;">priority_high</md-icon>
+		<div flex class="md-dialog-content" style="padding-left: 12px;">
+			This Visual is currently shared with {{:: $ctrl.visual.authorizedUsers.split(',').length }} users. Any changes you make will
+			affect all users.
+		</div>
+	</div>
+
+	<!-- Content -->
+	<md-dialog-content>
+		<div class="md-dialog-content" layout="column">
+			<div layout="column" layout-gt-xs="row">
+				<md-input-container class="md-block md-accent md-hue-3" flex>
+					<label>Name</label>
+					<input ng-model="$ctrl.visual.name" name="name" maxlength="100" required />
+					<div ng-messages="$ctrl.vizForm.name.$error">
+						<ng-message when="required">This field is required</ng-message>
+					</div>
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex>
+					<label>Site Name</label>
+					<input ng-model="$ctrl.visual.siteId" name="siteId" maxlength="100" required />
+					<div ng-messages="$ctrl.vizForm.siteId.$error">
+						<ng-message when="required">This field is required</ng-message>
+					</div>
+				</md-input-container>
+			</div>
+			<md-input-container class="md-block md-accent md-hue-3" flex>
+				<label>Tableau iFrame URL</label>
+				<input ng-model="$ctrl.visual.url" name="url" maxlength="256" required />
+				<!--<div class="dap-hint">Copy the link from the share dialog on Tableau</div>-->
+				<div ng-messages="$ctrl.vizForm.url.$error">
+					<ng-message when="required">This field is required</ng-message>
+				</div>
+			</md-input-container>
+			<!--<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+          <label>Authorized Users</label>
+          <md-chips ng-model="$ctrl.authorizedUsersArray" md-removable="true" md-enable-chip-edit="true"></md-chips>
+          <div class="dap-hint">Please enter a list of user email addresses</div>
+        </md-input-container>-->
+			<md-input-container class="md-block md-accent md-hue-3" flex>
+				<label>Tags</label>
+				<md-chips ng-model="$ctrl.tags" md-removable="true" md-enable-chip-edit="true">
+					<md-chip-template>
+						<md-icon class="material-icons ng-scope" md-colors="::{color: 'accent-A400'}" style="font-size: 1.5em;height:20px;min-height:20px;width:20px;min-width:20px;">local_offer</md-icon>
+						{{::$chip}}
+					</md-chip-template>
+				</md-chips>
+			</md-input-container>
+			<div layout="column" layout-gt-xs="row">
+				<md-input-container class="md-block md-accent md-hue-3" flex="50">
+					<label>Folder</label>
+					<input ng-model="$ctrl.visual.folder" name="siteId" maxlength="100" />
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex="25">
+					<md-checkbox ng-model="$ctrl.visual.showTabs" aria-label="Has Tabs">
+						Show Tabs
+					</md-checkbox>
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex="25">
+					<md-checkbox ng-model="$ctrl.visual.showToolbar" aria-label="Has Tabs">
+						Show Toolbar
+					</md-checkbox>
+				</md-input-container>
+			</div>
+			<md-input-container class="md-block md-accent md-hue-3" flex>
+				<label>Description</label>
+				<textarea ng-model="$ctrl.visual.description" rows="3" style="overflow: inherit;max-height: 170px!important;" ng-maxlength="2000"></textarea>
+			</md-input-container>
+		</div>
+	</md-dialog-content>
+
+	<!-- Actions -->
+	<md-dialog-actions layout="row">
+		<md-button class="md-raised" ng-click="$ctrl.close()">Cancel</md-button>
+		<md-button class="md-raised md-accent md-hue-3" ng-click="$ctrl.submit()" ng-disabled="$ctrl.vizForm.$invalid">
+			<md-icon class="material-icons dap-mgr-6">send</md-icon>Submit</md-button>
+	</md-dialog-actions>
+</form>

@@ -1,0 +1,17 @@
+<!-- Nav -->
+<md-nav-bar md-selected-nav-item="$ctrl.selectedTab">
+	<md-nav-item md-nav-click="$ctrl.navigate('CcrDashboards')" name="dashboards">
+		<md-icon class="material-icons dap-mgr-6">bubble_chart</md-icon>Dashboards</md-nav-item>
+	<md-nav-item md-nav-click="$ctrl.navigate('CcrReports')" name="reports">
+		<md-icon class="material-icons dap-mgr-6">library_books</md-icon>Reports</md-nav-item>
+	<md-nav-item md-nav-click="$ctrl.navigate('CcrSupport')" name="support">
+		<md-icon class="material-icons dap-mgr-6">person</md-icon>Support</md-nav-item>
+	<span flex></span>
+	<md-button class="md-accent md-hue-3" aria-label="Request Data Access" href="https://data-feedsqa.groupm.com/NewDataAccess/NewDataAccessRequest.aspx?feedID=72336c715648395852614d3d&action=487956344c54414f53764d3d&nr=3555335151453933542f303d"
+		target="_blank">
+		<md-icon class="material-icons dap-mgr-6">group_add</md-icon>Request Data Access
+	</md-button>
+</md-nav-bar>
+
+<!-- Content -->
+<ng-outlet></ng-outlet>

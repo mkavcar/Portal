@@ -1,0 +1,12 @@
+<!-- Nav -->
+<md-nav-bar md-selected-nav-item="$ctrl.selectedTab">
+	<md-nav-item md-nav-click="$ctrl.navigate('RoiDashboard')" name="dashboard">
+		<md-icon class="material-icons dap-mgr-6" md-colors="::{color: 'accent-A400'}">bubble_chart</md-icon>Dashboard</md-nav-item>
+	<md-nav-item md-nav-click="$ctrl.navigate('RoiQuery')" name="query">
+		<md-icon class="material-icons dap-mgr-6" md-colors="::{color: 'accent-A400'}">sync</md-icon>Query ROI</md-nav-item>
+	<md-nav-item md-nav-click="$ctrl.navigate('RoiUpload')" name="upload">
+		<md-icon class="material-icons dap-mgr-6" md-colors="::{color: 'accent-A400'}">cloud_upload</md-icon>Upload ROI</md-nav-item>
+</md-nav-bar>
+
+<!-- Content -->
+<ng-outlet></ng-outlet>

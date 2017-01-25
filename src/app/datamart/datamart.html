@@ -1,0 +1,228 @@
+<!-- Nav -->
+<md-nav-bar md-selected-nav-item="$ctrl.selectedTab" ng-if="$ctrl.selectedApp.appid">
+	<md-nav-item md-nav-click="$ctrl.navigate('Datamart', {})" name="datamanagement">
+		<md-icon class="material-icons dap-mgr-6">dns</md-icon>Data Management
+	</md-nav-item>
+	<span flex></span>
+	<md-menu md-position-mode="target-right target" class="dap-vertalign">
+		<md-button ng-click="$mdOpenMenu($event)" style="min-width: 1%;margin: 0;">
+			<md-icon class="material-icons">kitchen</md-icon>
+			{{:: $ctrl.selectedApp.datamartName}}
+			<md-icon class="material-icons">expand_more</md-icon>
+		</md-button>
+		<md-menu-content width="3">
+			<md-menu-item ng-repeat="item in $ctrl.applications">
+				<md-button ng-click="$ctrl.navigate('DMDataSource', item)">
+					<md-icon class="material-icons dap-mgr-6">kitchen</md-icon>{{:: item.datamartName }}
+				</md-button>
+			</md-menu-item>
+		</md-menu-content>
+	</md-menu>
+</md-nav-bar>
+
+<!-- Applications -->
+<md-content layout-padding flex ng-if="!$ctrl.selectedApp.appid" md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+	<div class="md-whiteframe-2dp dap-nopadding">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<h2>Applications</h2>
+				<span flex></span>
+				<md-button ng-click="$ctrl.edit(null, $event)">
+					<md-icon class="material-icons dap-mgr-6">group_add</md-icon>Request Access to a Datamart
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<!-- Filter -->
+		<dap-search on-search="$ctrl.bindApplication(search)"></dap-search>
+
+		<!-- Content -->
+		<md-content ng-if="$ctrl.applications.length" layout-xs="column" layout="row" layout-align="left" layout-wrap style="padding:8px">
+			<md-card ng-repeat="item in $ctrl.applications track by item.appid" style="width:290px;" class="dap-viz-card">
+
+				<!-- Card Header -->
+				<md-card-header class="dap-button" ng-click="$ctrl.navigate('DMDataSource', item)">
+					<md-card-avatar style="width: 60px;margin-left: 0;">
+						<img ng-src="https://datamart.groupm.com{{:: item.agencyLogo}}" />
+						<img ng-src="https://datamart.groupm.com{{:: item.datamartLogo}}" ng-if="::item.datamartLogo !== 'NA'" />
+					</md-card-avatar>
+					<md-card-header-text class="dap-center" style="max-height: inherit;">
+						<span flex class="md-body-2" style="line-height: 16px;word-break: break-all;"><md-tooltip md-direction="top">{{::item.dbName}} ({{::item.dbServer}})</md-tooltip>{{::item.datamartName}}</span>
+						<span class="md-subhead" style="font-size: 0.7em; font-weight:bold;line-height: 22px;">{{::item.countryName}}</span>
+						<div style="margin-top: 6px;">
+							<span>
+                                <md-tooltip md-direction="left">Data Sources</md-tooltip>
+                                <md-icon class="material-icons dap-icon-18px dap-mgr-6">kitchen</md-icon>{{::item.datasourcesCount}}
+                            </span> /
+							<span>
+                                <md-tooltip md-direction="right">Exports</md-tooltip>
+							    <md-icon class="material-icons dap-icon-18px dap-mgr-6">archive</md-icon>{{::item.exportsCount}}
+                            </span>
+						</div>
+					</md-card-header-text>
+				</md-card-header>
+			</md-card>
+		</md-content>
+		<dap-list-loading flex list="$ctrl.applications"></dap-list-loading>
+
+	</div>
+</md-content>
+
+<!-- Data Source Manager -->
+<md-content layout-padding flex ng-if="$ctrl.selectedApp.appid" md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+	<div class="md-whiteframe-2dp dap-nopadding">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<h2>Data Source Manager
+					<md-icon class="material-icons dap-mgr-6">chevron_right</md-icon>{{:: $ctrl.selectedApp.datamartName}}</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="$ctrl.isListView = !$ctrl.isListView">
+					<md-tooltip direction="top">{{ ($ctrl.isListView) ? 'Tile View' : 'List View' }}</md-tooltip>
+					<md-icon class="material-icons">{{ ($ctrl.isListView) ? 'view_module' : 'view_list' }}</md-icon>
+				</md-button>
+				<md-menu md-position-mode="target-right target">
+					<md-button aria-label="actions" class="md-icon-button dap-nomargin" ng-click="$mdOpenMenu($event)">
+						<md-icon class="material-icons">more_vert</md-icon>
+					</md-button>
+					<md-menu-content width="3">
+						<md-menu-item>
+							<md-button ng-click="$ctrl.edit(null, $event)">
+								<md-icon class="material-icons">add</md-icon>Add Data Source
+							</md-button>
+						</md-menu-item>
+					</md-menu-content>
+				</md-menu>
+			</div>
+		</md-toolbar>
+
+		<!-- Filter -->
+		<dap-search on-search="$ctrl.bindDatasource(search)"></dap-search>
+
+		<!-- Content -->
+
+		<!-- Tile View -->
+		<md-content ng-if="!$ctrl.isListView && $ctrl.datasources.length" layout-xs="column" layout="row" layout-align="left" layout-wrap
+			style="padding:8px">
+			<md-card ng-repeat="item in $ctrl.datasources track by item.datasourceID" style="width:300px;background: #eee;">
+
+				<!-- Card Header -->
+				<md-card-header style="background: #fff;">
+					<md-card-avatar style="width: 60px;margin-left: 0;">
+						<md-tooltip>{{:: item.feedName + ' - ' + item.feedVersion}}</md-tooltip>
+						<img ng-src="{{:: item.feedLogo.replace('-uat','')}}" style="-webkit-clip-path: inset(3%);clip-path: inset(3%);" />
+					</md-card-avatar>
+					<md-card-header-text class="dap-center" style="max-height: inherit;">
+						<div layout="row">
+							<span flex class="md-body-2" style="line-height: 16px;word-break: break-all;padding-right: 4px;">{{::item.datasourceName}}</span>
+							<md-button style="margin:0;min-width:1px;min-height: 1px;line-height:1;" class="dap-nopadding" ng-click="$ctrl.settings(null, $event)">
+								<md-icon class="material-icons">settings</md-icon>
+							</md-button>
+						</div>
+						<span class="md-subhead" style="font-size: 0.8em;line-height: 16px;padding-right: 24px;">{{::item.description}}</span>
+						<div layout="row">
+							<span flex></span>
+							<span class="md-subhead" style="font-size: 0.8em;font-weight:bold;">{{:: (item.nextExecutionDate) ? item.nextExecutionDate : 'Not Scheduled'}}</span>
+						</div>
+						<!--<div layout="row">
+						<span flex></span>
+						<span class="md-subhead" style="font-size: 0.8em;">Last Duration <span style="font-weight:bold;">{{:: (item.lastScheduleExecutionDuration | date:'hh:mm:ss') || 'N/A' }}</span></span>
+					</div>-->
+					</md-card-header-text>
+				</md-card-header>
+
+				<!-- Card Content -->
+				<md-card-content class="md-body-1 dap-button" ng-click="$ctrl.toggleMessage(item, 'Aquired')" ng-class="::{ 'dap-disabled': item.acquireStatus == null, 'dap-success': item.acquireStatus == 1, 'dap-warning': item.acquireStatus == 2, 'dap-error': item.acquireStatus == 0, 'dap-fatal': item.acquireStatus == -1 }"
+					style="padding: 8px 16px;">
+					<p layout="row" class="md-body-2 dap-nomargin">
+						Aquired
+						<span flex></span>
+						<md-icon id="iconMoreAquired{{::item.datasourceID}}" class="material-icons" ng-if="::item.acquireMessage">expand_more</md-icon>
+						<md-icon id="iconLessAquired{{::item.datasourceID}}" class="material-icons" style="display:none;" ng-if="::item.acquireMessage">expand_less</md-icon>
+					</p>
+					<div id="msgAquired{{::item.datasourceID}}" style="word-wrap: break-word;display:none;">{{ ::item.acquireMessage }}</div>
+				</md-card-content>
+				<md-divider></md-divider>
+				<md-card-content class="md-body-1 dap-button" ng-click="$ctrl.toggleMessage(item, 'Extract')" ng-class="::{ 'dap-disabled': item.extractStatus == null, 'dap-success': item.extractStatus == 1, 'dap-warning': item.extractStatus == 2, 'dap-error': item.extractStatus == 0 }"
+					style="padding: 8px 16px;">
+					<p layout="row" class="md-body-2 dap-nomargin">
+						Extracted
+						<span flex></span>
+						<md-icon id="iconMoreExtract{{::item.datasourceID}}" class="material-icons" ng-if="::item.extractMessage">expand_more</md-icon>
+						<md-icon id="iconLessExtract{{::item.datasourceID}}" class="material-icons" style="display:none;" ng-if="::item.extractMessage">expand_less</md-icon>
+					</p>
+					<div id="msgExtract{{::item.datasourceID}}" style="word-wrap: break-word;display:none;">{{ ::item.extractMessage }}</div>
+				</md-card-content>
+				<md-divider></md-divider>
+				<md-card-content class="md-body-1 dap-button" ng-click="$ctrl.toggleMessage(item, 'Transform')" ng-class="::{ 'dap-disabled': item.transformStatus == null, 'dap-success': item.transformStatus == 1, 'dap-warning': item.transformStatus == 2, 'dap-error': item.transformStatus == 0 }"
+					style="padding: 8px 16px;">
+					<p layout="row" class="md-body-2 dap-nomargin">
+						Transformed
+						<span flex></span>
+						<md-icon id="iconMoreTransform{{::item.datasourceID}}" class="material-icons" ng-if="::item.transformMessage">expand_more</md-icon>
+						<md-icon id="iconLessTransform{{::item.datasourceID}}" class="material-icons" style="display:none;" ng-if="::item.transformMessage">expand_less</md-icon>
+					</p>
+					<div id="msgTransform{{::item.datasourceID}}" style="word-wrap: break-word;display:none;">{{ ::item.transformMessage }}</div>
+				</md-card-content>
+				<md-divider></md-divider>
+				<md-card-content class="md-body-1 dap-button" ng-click="$ctrl.toggleMessage(item, 'Load')" ng-class="::{ 'dap-disabled': item.loadStatus == null, 'dap-success': item.loadStatus == 1, 'dap-warning': item.loadStatus == 2, 'dap-error': item.loadStatus == 0 }"
+					style="padding: 8px 16px;">
+					<p layout="row" class="md-body-2 dap-nomargin">
+						Loaded
+						<span flex></span>
+						<md-icon id="iconMoreLoad{{::item.datasourceID}}" class="material-icons" ng-if="::item.loadMessage">expand_more</md-icon>
+						<md-icon id="iconLessLoad{{::item.datasourceID}}" class="material-icons" style="display:none;" ng-if="::item.loadMessage">expand_less</md-icon>
+					</p>
+					<div id="msgLoad{{::item.datasourceID}}" style="word-wrap: break-word;display:none;">{{ ::item.loadMessage }}</div>
+				</md-card-content>
+			</md-card>
+		</md-content>
+
+		<!-- List View -->
+		<md-content layout="column" ng-if="$ctrl.isListView && $ctrl.datasources.length">
+			<div ng-repeat="item in $ctrl.datasources track by item.datasourceID" class="dap-viz-card">
+				<div layout="row">
+					<div style="width:30px;padding: 10px 0 10px 15px;" class="dap-vertalign">
+						<md-icon id="iconMore{{::item.datasourceID}}" class="material-icons dap-button" ng-click="$ctrl.toggleRow(item)" ng-disabled="::!item.acquireMessage && !item.extractMessage && !item.transformMessage && !item.loadMessage">
+							<md-tooltip>Show Details</md-tooltip>expand_more
+						</md-icon>
+						<md-icon id="iconLess{{::item.datasourceID}}" class="material-icons dap-button" style="display:none" ng-click="$ctrl.toggleRow(item)"
+							ng-disabled="::!item.acquireMessage && !item.extractMessage && !item.transformMessage && !item.loadMessage">
+							<md-tooltip>Hide Details</md-tooltip>expand_less
+						</md-icon>
+					</div>
+					<div flex style="padding:15px;word-wrap: break-word;" class="dap-vertalign">
+						{{::item.datasourceName}}
+						<div class="md-caption">{{::item.description}}</div>
+					</div>
+					<div style="padding:15px" class="dap-vertalign md-caption">
+						{{:: (item.nextExecutionDate) ? item.nextExecutionDate : 'Not Scheduled'}}
+					</div>
+					<div flex="15" layout="column" layout-align="center center" style="padding: 15px;" ng-class="::{ 'dap-disabled': item.acquireStatus == null, 'dap-success': item.acquireStatus == 1, 'dap-warning': item.acquireStatus == 2, 'dap-error': item.acquireStatus == 0, 'dap-fatal': item.acquireStatus == -1 }">
+						<span class="md-body-2">Aquired</span>
+						<div name="msg{{::item.datasourceID}}" flex layout="column" class="md-caption" style="word-wrap: break-word;display:none;">{{ ::item.acquireMessage }}</div>
+					</div>
+					<div flex="15" layout="column" layout-align="center center" style="padding: 15px;" ng-class="::{ 'dap-disabled': item.extractStatus == null, 'dap-success': item.extractStatus == 1, 'dap-warning': item.extractStatus == 2, 'dap-error': item.extractStatus == 0 }">
+						<span class="md-body-2">Extracted</span>
+						<div name="msg{{::item.datasourceID}}" flex layout="column" class="md-caption" style="word-wrap: break-word;display:none;">{{ ::item.extractMessage }}</div>
+					</div>
+					<div flex="15" layout="column" layout-align="center center" style="padding: 15px;" ng-class="::{ 'dap-disabled': item.transformStatus == null, 'dap-success': item.transformStatus == 1, 'dap-warning': item.transformStatus == 2, 'dap-error': item.transformStatus == 0 }">
+						<span class="md-body-2">Transformed</span>
+						<div name="msg{{::item.datasourceID}}" flex layout="column" class="md-caption" style="word-wrap: break-word;display:none;">{{ ::item.transformMessage }}</div>
+					</div>
+					<div flex="15" layout="column" layout-align="center center" style="padding: 15px;" ng-class="::{ 'dap-disabled': item.loadStatus == null, 'dap-success': item.loadStatus == 1, 'dap-warning': item.loadStatus == 2, 'dap-error': item.loadStatus == 0 }">
+						<span class="md-body-2">Loaded</span>
+						<div name="msg{{::item.datasourceID}}" flex layout="column" class="md-caption" style="word-wrap: break-word;display:none;">{{ ::item.loadMessage }}</div>
+					</div>
+				</div>
+				<md-divider></md-divider>
+			</div>
+		</md-content>
+
+		<dap-list-loading flex list="$ctrl.datasources"></dap-list-loading>
+
+	</div>
+</md-content>

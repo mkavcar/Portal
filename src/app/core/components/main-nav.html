@@ -1,0 +1,28 @@
+<md-sidenav class="md-sidenav-left" md-component-id="dapMainNav" md-is-locked-open="false" md-whiteframe="2">
+	<md-list ng-cloak ng-if="$ctrl.menu">
+
+		<!-- Top Menu -->
+		<md-list-item ng-repeat-start="item in ::$ctrl.menu" class="noright" ng-click="$ctrl.select(item)">
+			<p layout="row">
+				<md-icon class="material-icons md-accent md-hue-2" style="margin-right: 10px;">{{::item.icon}}</md-icon>{{::item.name}}
+				<span flex></span>
+				<md-icon class="material-icons md-accent md-hue-2" ng-if="$ctrl.hasSubMenu(item)">{{ item.showSubmenu === true ? 'expand_less' : 'expand_more'}}</md-icon>
+			</p>
+		</md-list-item>
+		<div ng-repeat-end ng-show="item.showSubmenu === true" style="background: #f0f0f0;">
+
+			<!-- Sub Menu -->
+			<md-list-item ng-repeat="subitem in ::item.submenu" class="noright" ng-click="$ctrl.select(subitem)">
+				<p layout="row" style="{{:: (subitem.hasAccess === false) ? 'color:#888;': ''}}">
+					<md-icon class="material-icons md-accent md-hue-2" style="margin-right: 10px;">{{::subitem.icon}}</md-icon>{{::subitem.name}}
+					<span flex></span>
+					<md-button class="md-accent md-hue-3" ng-click="$ctrl.access(null, $event)" ng-if="subitem.hasAccess === false" style="min-width:1px; margin:0;margin-right: -4px;">
+						<md-tooltip md-direction="top">request access</md-tooltip>
+						<md-icon class="material-icons">group_add</md-icon>
+					</md-button>
+				</p>
+			</md-list-item>
+		</div>
+	</md-list>
+	<dap-list-loading flex list="$ctrl.menu"></dap-list-loading>
+</md-sidenav>

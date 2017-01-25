@@ -1,0 +1,4 @@
+<md-button class="md-icon-button" ng-click="$ctrl.show($event)" id="dapNotificationButton" ng-disabled="!$ctrl.notifications">
+	<md-icon class="material-icons">notifications</md-icon>
+	<span class="dap-notifications-label" ng-if="$ctrl.unread > 0">{{ $ctrl.unread }}</span>
+</md-button>

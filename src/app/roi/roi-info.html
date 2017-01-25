@@ -1,0 +1,24 @@
+<md-dialog flex="80">
+    <md-toolbar class="md-accent md-hue-3">
+        <div class="md-toolbar-tools">
+        <h2>ROI Details</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="ctrl.close()">
+            <md-icon class="material-icons">clear</md-icon>
+        </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content dap-template-content" layout="column">
+
+            <h3>How to Retrieve ROI Data</h3>
+            Retrieve ROI benchmarks based on 4 dimensions: Category, Subcategory, Country, and Communication Channel. You can select values for all 4 dimensions or a subset of dimensions. Benchmarks can be returned for a given search criteria as Average ROI, Median ROI, Trimmed Mean ROI (5%), and/or Predictive ROI. Average, Median, and Trimmed Mean ROI (5%) are actual benchmarks from our ROI database, while Predictive ROI is the output of our prediction model.
+            <br><br>
+            <h3>Disclaimer when providing benchmarks</h3>
+            1. If a certain criteria has less than 3 studies or all studies from the same client/brand, benchmark is not being calculated due to data anonymous requirements. 
+            <p>2. We are only using samples with ROI between 0 and 16. ROI outside this range are considered outliers.</p> 
+            <p>3. If we have multiple ROI numbers for the same campaign, we are using the last one.</p>
+
+        </div>
+    </md-dialog-content>
+</md-dialog>

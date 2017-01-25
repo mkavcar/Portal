@@ -1,0 +1,22 @@
+<md-content layout="row" md-colors="::{background: 'primary-500'}" style="padding: 0 8px;">
+
+	<!-- Search -->
+	<div flex>
+		<md-input-container md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input {{ ($ctrl.search) ? 'md-icon-right' : '' }}">
+			<md-icon class="material-icons md-accent">search</md-icon>
+			<input ng-model="$ctrl.search" ng-change="$ctrl.onSearch({search: $ctrl.search})" placeholder="Search" ng-model-options="{ debounce: 100 }"
+				type="text" md-colors="::{color: 'accent-A100'}" aria-label="Search">
+			<md-icon class="material-icons md-accent dap-button" ng-if="$ctrl.search" ng-click="$ctrl.search = ''; $ctrl.onSearch()">clear</md-icon>
+		</md-input-container>
+	</div>
+
+	<!-- Sort -->
+	<div ng-if="$ctrl.sortFields" layout="row" layout-align="end center" style="margin-left:20px;">
+		<span><md-icon class="material-icons md-accent"><md-tooltip md-direction="top">Sort</md-tooltip>sort</md-icon></span>
+		<md-select ng-model="$ctrl.sort" ng-change="$ctrl.onSort({sort: $ctrl.sort})" class="md-no-underline dap-nomargin">
+			<md-optgroup label="Sort By...">
+				<md-option ng-repeat="item in $ctrl.sortFields" value="{{::item.value}}">{{::item.name}}</md-option>
+			</md-optgroup>
+		</md-select>
+	</div>
+</md-content>

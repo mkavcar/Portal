@@ -1,0 +1,145 @@
+<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+	<div class="md-whiteframe-2dp dap-nopadding">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<h2>
+					<span>App Main Menu</span>
+				</h2>
+				<span flex></span>
+				<md-button ng-click="$ctrl.add(null, $event)">
+					<md-icon class="material-icons dap-mgr-6">add</md-icon>Add Root Menu Item
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<!-- Filter -->
+		<md-content flex md-colors="::{background: 'primary-400'}" style="padding: 0 8px;">
+			<md-input-container md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+				<md-icon class="material-icons md-accent">search</md-icon>
+				<input ng-model="$ctrl.search" placeholder="Search" ng-model-options="{ debounce: 200 }" type="text" md-colors="::{color: 'accent-A100'}"
+					aria-label="Search">
+			</md-input-container>
+		</md-content>
+
+		<!-- Content -->
+		<md-content flex>
+			<div layout="row" md-colors="::{background: 'background-400'}">
+				<div style="width:40px;margin:auto;" align="center">
+					<md-button class="md-icon-button" ng-click="$ctrl.toggleAll()" style="margin:0">
+						<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">{{ $ctrl.showAllSubmenus === true ? 'expand_less' : 'expand_more'}}</md-icon>
+					</md-button>
+				</div>
+				<div flex="20" style="padding:20px 20px 20px 0">
+					<label>Name</label>
+				</div>
+				<div flex="5" style="padding:20px 0" align="center">
+					<label>Order</label>
+				</div>
+				<div flex="20" style="padding:20px">
+					<label>Navigate To</label>
+				</div>
+				<div flex="5" style="padding:20px 0" align="center">
+					<label>Icon</label>
+				</div>
+				<div flex style="padding:20px">
+					<label>Roles</label>
+				</div>
+				<div align="center" style="padding:20px;width:100px;">
+					<label>Actions</label>
+				</div>
+			</div>
+			<md-divider></md-divider>
+
+			<!-- Main Menu -->
+			<div ng-repeat="item in $ctrl.menu | filter: $ctrl.filter as filteredList track by item.name">
+				<div flex layout="row">
+					<div style="width:40px;margin:auto;" align="center">
+						<md-button class="md-icon-button" ng-if="$ctrl.hasSubMenu(item)" ng-click="$ctrl.toggle(item)" style="margin:0">
+							<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">{{ item.showSubmenu === true ? 'expand_less' : 'expand_more'}}</md-icon>
+						</md-button>
+					</div>
+					<div flex="20" style="padding-right:20px;margin:auto;">
+						{{:: item.name }}
+					</div>
+					<div flex="5" style="padding:10px 20px;margin:auto;" align="center">
+						{{:: item.order }}
+					</div>
+					<div flex="20" style="padding:10px 20px;margin:auto;word-break: break-all;">
+						<div>{{:: item.url }}</div>
+						<div class="md-body-1" md-colors="::{color: 'background-700'}">{{:: item.type }}</div>
+					</div>
+					<div flex="5" style="padding:10px 0px;margin:auto;" align="center">
+						<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">{{:: item.icon }}</md-icon>
+					</div>
+					<div flex style="padding:0 15px;margin:auto;">
+						<md-chips ng-model="::item.roles" readonly="true" md-removable="false" class="dap-chips-noborder">
+							<md-chip-template>
+								<md-icon class="material-icons ng-scope" md-colors="::{color: 'accent-A400'}" style="font-size: 1.7em;">people</md-icon>
+								{{::$chip}}
+							</md-chip-template>
+						</md-chips>
+					</div>
+					<div align="right" style="margin:auto;width:140px;">
+						<md-button class="md-icon-button" ng-click="$ctrl.add(item, $event)" style="margin:0" ng-if="item.type === 'header'">
+							<md-tooltip md-direction="top">add sub menu</md-tooltip>
+							<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">add</md-icon>
+						</md-button>
+						<md-button class="md-icon-button" ng-click="$ctrl.edit(item, $event)" style="margin:0">
+							<md-tooltip md-direction="top">edit</md-tooltip>
+							<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">edit</md-icon>
+						</md-button>
+						<md-button class="md-icon-button" ng-click="$ctrl.remove(item, null, $event)" style="margin:0">
+							<md-tooltip md-direction="top">delete</md-tooltip>
+							<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">delete</md-icon>
+						</md-button>
+					</div>
+				</div>
+				<md-divider ng-if="!$last"></md-divider>
+
+				<!-- Sub Menu -->
+				<div ng-show="item.showSubmenu === true" ng-repeat="subitem in item.submenu | filter: $ctrl.filter track by subitem.name"
+					style="background: #f0f0f0;">
+					<div flex layout="row">
+						<div style="width:40px">
+						</div>
+						<div flex="20" style="padding-right:20px;margin:auto;">
+							{{:: subitem.name }}
+						</div>
+						<div flex="5" style="padding:10px 20px;margin:auto;" align="center">
+							{{:: subitem.order }}
+						</div>
+						<div flex="20" style="padding:10px 20px;margin:auto;word-break: break-all;">
+							<div>{{:: subitem.url }}</div>
+							<div class="md-body-1" md-colors="::{color: 'background-700'}">{{:: subitem.type }}</div>
+						</div>
+						<div flex="5" style="padding:10px 0px;margin:auto;" align="center">
+							<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">{{:: subitem.icon }}</md-icon>
+						</div>
+						<div flex style="padding:0 15px;margin:auto;">
+							<md-chips ng-model="::subitem.roles" readonly="true" md-removable="false" class="dap-chips-noborder">
+								<md-chip-template>
+									<md-icon class="material-icons ng-scope" md-colors="::{color: 'accent-A400'}" style="font-size: 1.7em;">people</md-icon>
+									{{::$chip}}
+								</md-chip-template>
+							</md-chips>
+						</div>
+						<div align="right" style="margin:auto;width:140px;">
+							<md-button class="md-icon-button" ng-click="$ctrl.edit(subitem, $event)" style="margin:0">
+								<md-tooltip md-direction="top">edit</md-tooltip>
+								<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">edit</md-icon>
+							</md-button>
+							<md-button class="md-icon-button" ng-click="$ctrl.remove(item, subitem, $event)" style="margin:0">
+								<md-tooltip md-direction="top">delete</md-tooltip>
+								<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">delete</md-icon>
+							</md-button>
+						</div>
+					</div>
+					<md-divider ng-if="!$last"></md-divider>
+				</div>
+			</div>
+			<dap-list-loading flex list="$ctrl.menu" filteredlist="filteredList"></dap-list-loading>
+		</md-content>
+	</div>
+</md-content>

@@ -1,0 +1,27 @@
+<md-toolbar layout="row" class="md-hue-2" md-whiteframe="4">
+	<div class="md-toolbar-tools">
+
+		<!-- Main Nav -->
+		<md-button ng-if="$root.auth.isLoggedIn()" class="md-icon-button" aria-label="More" ng-click="$ctrl.toggleMainnav()">
+			<md-icon class="material-icons dap-spin" ng-class="{ 'dap-spin' : $ctrl.toggleSpin === true }">apps</md-icon>
+		</md-button>
+
+		<!-- Logo -->
+		<img src="content/images/logo_white.png" style="vertical-align: middle;height: 35px;" ng-click="$ctrl.navigate('Home')" class="dap-button">
+
+		<!-- Title -->
+		<h2 class="dap-header-text dap-ellipsis" ng-if="$root.appTitle">
+			{{ $root.appTitle }}
+		</h2>
+		<span flex></span>
+
+		<!-- Notifications -->
+		<dap-notifications ng-if="$root.auth.isLoggedIn()"></dap-notifications>
+
+		<!-- Help -->
+		<dap-help-button ng-if="$root.auth.isLoggedIn()"></dap-help-button>
+
+		<!-- Login -->
+		<dap-login-button style="margin-right: -8px;"></dap-login-button>
+	</div>
+</md-toolbar>

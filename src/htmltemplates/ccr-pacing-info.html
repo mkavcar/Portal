@@ -1,0 +1,1891 @@
+<md-dialog flex="80">
+    <md-toolbar class="md-accent md-hue-3">
+        <div class="md-toolbar-tools">
+        <h2>Pacing Report Details</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="ctrl.close()">
+            <md-icon class="material-icons">clear</md-icon>
+        </md-button>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <div class="md-dialog-content dap-template-content" layout="column">
+
+<div id="PacingReport" class="policies_text" style="display: block;">
+    <div id="PacingReportContent" class="dynamiceLoadContent">
+<p>Pacing reports allow media planning teams to monitor the rate of trafficking against campaign plans. The primary goal of these reports is to indicate whether the campaign's budget is being spent evenly across the allotted time period. Multiple measures are provided as lenses into this how delivery unfolds for a given campaign, on a raw, running sum, and percentage basis. Some of the measures are as follows: </p>
+<ul>
+    <li>Days completed and remaining in a given campaign</li>
+    <li>Impressions delivered vs planned</li>
+    <li>Actual capped and uncapped cost vs planned</li>
+</ul>
+<p>Please note, all the reports have data available from 1/1/2015 to the prior day except for Moat whose data is available only from 5/1/2016.</p>
+<p>&nbsp;</p>
+<h2>Report Data Sources</h2>
+<p>CCR uses the following data sources: </p>
+<p><strong> Campaign Management: </strong> Prisma </p>
+<p><strong> Primary Ad Servers: </strong> DFA &amp; Sizmek</p>
+<p><strong> Campaign Verification: </strong> DoubleVerify &amp; Moat</p>
+
+<p>&nbsp;</p>
+<h2>Report Types</h2>
+<p>Due to the varying level of granularity of the reports, CCR provides these reports in four categories:</p>
+<p>&nbsp;</p>
+<h2>Summary Reports</h2>
+<p>We provide summary reports for a high-level view of how each client’s trafficking is pacing by campaign, inventory type, and site. Because CCR’s data can be very dense at its most granular level, these reports provide superior performance when seeking to access it.</p>
+<p>These reports include:</p>
+<ul>
+  <li>Overall Pacing</li>
+  <li style="list-style-type:none;">A report which gives an overall dashboard view of pacing of all campaigns across multiple clients you have access to. <a href="#over">Click here</a> for report definition. </li>
+</ul>
+<ul>
+  <li>Pacing by Campaign</li>
+  <li style="list-style-type:none;">A report which tracks pacing for all campaigns. <a href="#camp">Click here</a> for report definition. </li>
+</ul>
+<ul>
+  <li>Pacing by Inventory Type</li>
+  <li style="list-style-type:none;">A report which tracks pacing for all campaigns by the Inventory Type they were trafficked on. <a href="#inven">Click here</a> for report definition. </li>
+</ul>
+<ul>
+  <li>Pacing by Site</li>
+  <li style="list-style-type:none;"> A report which tracks pacing for all campaigns by the Sites they were trafficked on. <a href="#site">Click here</a> for report definition. </li>
+</ul>
+<p>&nbsp;</p>
+<h2>Detailed Reports – By Delivery Period</h2>
+<p>This category of reports provides campaign pacing details on varying levels of delivery periods, namely, Monthly and Daily.</p>
+<ul>
+  <li>Pacing by Month</li>
+  <li style="list-style-type:none;"> A monthly report which tracks pacing for all campaigns by the Sites they were trafficked on. <a href="#month">Click here</a> for report definition. </li>
+</ul>
+<ul>
+  <li>Running Sum by Month</li>
+  <li style="list-style-type:none;"> A running sum report which tracks pacing for all campaigns by the Sites they were trafficked on. <a href="#runmonth">Click here</a> for report definition. </li>
+</ul>
+<ul>
+  <li>Pacing by Date</li>
+  <li style="list-style-type:none;">A daily report which tracks pacing for all campaigns by the Sites they were trafficked on. <a href="#devdate">Click here</a> for report definition.</li>
+</ul>
+<ul>
+  <li>Running Sum by Date</li>
+  <li style="list-style-type:none;">A running sum report which tracks pacing for all campaigns by the Sites they were trafficked on. <a href="#rundate">Click here</a> for report definition. </li>
+</ul>
+<p>&nbsp;</p>
+<h2>Detailed Reports – By Granularity</h2>
+<p>This category of reports provides campaign pacing details on varying levels granularity, namely, Site, Creative and Placement.</p>
+<ul>
+  <li>Pacing by Site and Creative</li>
+  <li style="list-style-type:none;">A report which tracks pacing for all campaigns by the Sites they were trafficked on and the Creatives which were trafficked. <a href="#sitecreative">Click here</a> for report definition. </li>
+</ul>
+<ul>
+  <li>Pacing by Creative and Site</li>
+  <li style="list-style-type:none;"> A report which tracks pacing for all campaigns by the Creatives which were trafficked and the Sites they were trafficked on. <a href="#creativesite">Click here</a> for report definition. </li>
+</ul>
+<ul>
+  <li>Pacing by Placement</li>
+  <li style="list-style-type:none;">A report which tracks pacing for all campaigns by the planned placements. <a href="#placement">Click here</a> for report definition. </li>
+</ul>
+<p>&nbsp;</p>
+<h2>Detailed Reports – Placement by Date</h2>
+<p>This category of reports provides campaign pacing details on the most granular daily level.</p>
+<ul>
+  <li>Pacing by Placement by Date</li>
+  <li style="list-style-type:none;">This is the most granular pacing report which tracks pacing for all campaign by the planned placement on a daily level.  <a href="#placementbydate">Click here</a> for report definition. </li>
+</ul>
+
+<p>&nbsp;</p>
+<h2>Working with the reports - Downloaded Report Files</h2>
+<p>This section covers some important information you must know about the downloaded reports. </p>
+<p></p>
+<p style="font-weight:bold">File Format</p>
+<p>All report files downloaded from the CCR website are Excel Files. When the user opens the files for the first time, they will need to click on the “Enable Content” button that appears on top of the file.</p>
+
+<p> Note: Make sure you have Excel 2013 to use these reports. Some functionality may not work if you have a lower version of Excel.</p>
+<p>Note: On clicking the “Enable Content” button, the file will automatically refresh to display the client data the user has access to. For this automatic refresh to take place, make sure you’re on GroupM network or VPN. Please allow a moment for the report to fetch all of your data. </p>
+<p>Note: Make sure you have approved access to the data.</p>
+
+<p>&nbsp;</p>
+<h2>Report Filters Worksheet</h2>
+
+<p style="font-weight:bold">“Refresh Data” Button</p>
+<p>The “Refresh Data” button helps you to refresh the reports to the latest available data. Clicking on this button will not reset your filters. The data is processed on a daily basis, and the latest data available at any time is 48 hours prior to the current date at launch. Overtime, we will aim to reduce this to a 24 hour window. </p>
+
+<p style="font-weight:bold">“Clear Filters” Button</p>
+<p>The “Clear Filters” button resets all selected filters. </p>
+<p>&nbsp;</p>
+<h2> Data Filter Parameters - Summary Reports </h2>
+<p>Both Pacing and Performance Summary reports have the same filter parameters. Details of these parameters are given below:</p>
+<ul>
+  <li>Country</li>
+  <li style="list-style-type:none;">This filter allows you to filter your clients by the country you manage. If you have access to clients in both US and Canada, this filter will show both buttons, otherwise, it will just show the one country your clients reside.</li>
+</ul>
+<ul>
+  <li>Calendar Year</li>
+  <li style="list-style-type:none;">CCR contains Planned and Delivered for full year 2015 onwards, this filter allows you to view data for either one year or both years.  </li>
+</ul>
+<ul>
+  <li>Client </li>
+  <li style="list-style-type:none;">This filter will contain a list of all clients you have access to. Select single or multiple clients depending on what client’s data you wish to view in the reports. </li>
+</ul>
+<p>&nbsp;</p>
+<h2> Data Filter Parameters - Detailed Reports </h2>
+<p>Both Pacing and Performance Detailed reports have the same filter parameters. Details of these parameters are given below:</p>
+<ul>
+  <li>Country</li>
+  <li style="list-style-type:none;">This filter allows you to filter your clients by the country you manage. If you have access to clients in both US and Canada, this filter will show both buttons, otherwise, it will just show the one country your clients reside.</li>
+</ul>
+<ul>
+  <li>Date Range</li>
+  <li style="list-style-type:none;">Since these reports are more detailed, we have provided a date slider, which allows you to select monthly date ranges instead of just years. This will allow you to filter data further by days, months and quarters. Select a start and end date by expanding the selected portion of the slider across a date range. This filter allows you to view your data as detailed as a day to as high level as a year. The slider itself can be changed to select days, months, quarters or years.</li>
+</ul>
+<ul>
+  <li>Client </li>
+  <li style="list-style-type:none;">This filter will contain a list of all clients you have access to. Select single or multiple clients depending on what client’s data you wish to view in the reports. </li>
+</ul>
+<p>&nbsp;</p>
+<h2>Report Definitions</h2>
+<h2 id="over" style="margin:20px 0 0 140px;">Overall Pacing</h2>
+<table>
+  <tbody>
+    <tr>
+        <td valign="middle" style="font-weight:bold">Dimension Name</td>
+        <td valign="middle" style="font-weight:bold">Description</td>
+    </tr>
+    <tr>
+      <td valign="middle">Client</td>
+      <td valign="middle">Client name</td>
+    </tr>
+    <tr>
+      <td valign="middle">Product</td>
+      <td valign="middle">Product name</td>
+    </tr>
+    <tr>
+      <td valign="middle">Campaign Name</td>
+      <td valign="middle">The Campaign Name</td>
+    </tr>
+    <tr>
+      <td valign="middle">Campaign Start Date</td>
+      <td valign="middle">The campaign start date</td>
+    </tr>
+    <tr>
+      <td valign="middle">Campaign End Date </td>
+      <td valign="middle">The campaign end date</td>
+    </tr>
+    <tr>
+      <td style="border-right:none"></td>
+      <td style="border-left:none"></td>
+    </tr>
+    <tr>
+        <td valign="middle" style="font-weight:bold">Metric Name</td>
+        <td valign="middle" style="font-weight:bold">Description</td>
+    </tr>
+    <tr>
+      <td valign="middle">% Days Completed (Delivered) </td>
+      <td valign="middle">Displays the percentage of days into the campaign. [days into the campaign / total days of campaign]</td>
+    </tr>
+    <tr>
+      <td valign="middle">% Days Left </td>
+      <td valign="middle">Displays the percentage of days remaining in the campaign. [days left from campaign / total days of campaign] </td>
+    </tr>
+    <tr>
+      <td valign="middle">Run Rate</td>
+      <td valign="middle">[actual capped cost / planned cost * number of days of campaign / number days into campaign]</td>
+    </tr>
+    <tr>
+      <td valign="middle">Planned Impressions </td>
+      <td valign="middle"><p>Number of impressions the campaign is scheduled to achieve.</p>
+        <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p></td>
+    </tr>
+    <tr>
+      <td valign="middle">Actual Impressions</td>
+      <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+    </tr>
+    <tr>
+      <td valign="middle">Planned Impressions Left </td>
+      <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+    </tr>
+    <tr>
+      <td valign="middle"><p>% Impressions Delivered </p>
+        <p>("Impressions Pacing") </p></td>
+      <td valign="middle">Percentage of planned impressions delivered.
+          [actual impressions / planned impressions]</td>
+    </tr>
+    <tr>
+      <td valign="middle">% Impressions Left</td>
+      <td valign="middle">Percentage of planned impressions left.
+          [planned impressions left/ planned impressions]</td>
+    </tr>
+	<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+    <tr>
+      <td valign="middle">Planned Cost</td>
+      <td valign="middle">Total planned spend for the campaign.</td>
+    </tr>
+    <tr>
+      <td valign="middle"><p>Actual Capped Cost</p></td>
+      <td valign="middle">
+        <p>Capping methods:</p>
+        <p>Date Capped:</p>
+        <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+        <p>Cost Capped:</p>
+        <p>This occurs at the package and flight level. Which means:</p>
+        <ol>
+          <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+          <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+          <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+        </ol>
+        <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+        <p></p></td>
+    </tr>
+    <tr>
+      <td valign="middle">Actual Uncapped Cost</td>
+      <td valign="middle">Total actual spend reported for the campaign.</td>
+    </tr>
+    <tr>
+      <td valign="middle">Planned Cost Left</td>
+      <td valign="middle">Planned amount left in the campaign.
+          [planned cost - actual capped cost]</td>
+    </tr>
+    <tr>
+      <td valign="middle"><p>% Actual Cost Delivered </p>
+        <p>("Budget Pacing") </p></td>
+      <td valign="middle">Percentage of planned cost spent.
+          [actual capped cost / planned cost]</td>
+    </tr>
+    <tr>
+      <td valign="middle">% Planned Cost Left </td>
+      <td valign="middle">Percentage of planned cost left in the campaign.
+          [planned cost left / planned cost] </td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="camp" style="margin:20px 0 0 140px;">Pacing By Campaign</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="inven" style="margin:20px 0 0 140px;">Pacing By Inventory Type</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Inventory Type</td>
+            <td valign="middle">Type of digital Inventory (platform, Format, FEP) e.g. Console FEP, Mobile App</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="site" style="margin:20px 0 0 140px;">Pacing By Site</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear.</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="month" style="margin:20px 0 0 140px;">Pacing by Month</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear.</td>
+        </tr>      
+        <tr>
+            <td valign="middle">Calendar Year</td>
+            <td valign="middle">Year of the delivery within the campaign flight date.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Calendar Month</td>
+            <td valign="middle">Month of the delivery within the campaign flight date.</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="runmonth" style="margin:20px 0 0 140px;">Running Sum by Month</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Calendar Year</td>
+            <td valign="middle">Year of the delivery within the campaign flight date.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Calendar Month</td>
+            <td valign="middle">Month of the delivery within the campaign flight date.</td>
+        </tr>        
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="devdate" style="margin:20px 0 0 140px;">Pacing by Date</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Date</td>
+            <td valign="middle">Date of the delivery within the campaign flight date</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="rundate" style="margin:20px 0 0 140px;">Running Sum by Date</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Date</td>
+            <td valign="middle">Date of the delivery within the campaign flight date</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="sitecreative" style="margin:20px 0 0 140px;">Pacing by Site and Creative</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Creative</td>
+            <td valign="middle">The creative name</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="creativesite" style="margin:20px 0 0 140px;">Pacing by Creative and Site</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Creative</td>
+            <td valign="middle">The creative name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear.</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="placement" style="margin:20px 0 0 140px;">Pacing by Placement</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Placement Name</td>
+            <td valign="middle">The placement name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Cost Method</td>
+            <td valign="middle">Cost method that determines how ads in the placement are priced. For example, CPC.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Unit Dimension</td>
+            <td valign="middle">The size of the placement</td>
+        </tr>
+        <tr>
+            <td valign="middle">Inventory Type</td>
+            <td valign="middle">Type of digital Inventory (platform, Format, FEP) e.g. Console FEP, Mobile App</td>
+        </tr>
+        <tr>
+            <td valign="middle">Targeting Type 1</td>
+            <td valign="middle">Behavioral, re-targeting, contextual, demographics, etc.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Targeting Type 2</td>
+            <td valign="middle">Behavioral, re-targeting, contextual, demographics, etc.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Source Actual Impressions</td>
+            <td valign="middle">The actual source of the delivered units. This could be the third party ad server or delivery data coming in from Prisma. The selection of the source is dependent on the cost method.</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<h2 id="placementbydate" style="margin:20px 0 0 140px;">Pacing by Placement by Date</h2>
+<table>
+    <tbody>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Dimension Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Client</td>
+            <td valign="middle">Client name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Product</td>
+            <td valign="middle">Product name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Name</td>
+            <td valign="middle">The Campaign Name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign Start Date</td>
+            <td valign="middle">The campaign start date</td>
+        </tr>
+        <tr>
+            <td valign="middle">Campaign End Date </td>
+            <td valign="middle">The campaign end date</td>
+        </tr>
+		<tr>
+            <td valign="middle">Supplier Name</td>
+            <td valign="middle">Name of the supplier as setup in Prisma.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Site Name</td>
+            <td valign="middle">Name of the website where the placement will appear</td>
+        </tr>
+        <tr>
+            <td valign="middle">Placement Name</td>
+            <td valign="middle">The placement name</td>
+        </tr>
+        <tr>
+            <td valign="middle">Cost Method</td>
+            <td valign="middle">Cost method that determines how ads in the placement are priced. For example, CPC.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Unit Dimension</td>
+            <td valign="middle">The size of the placement</td>
+        </tr>
+        <tr>
+            <td valign="middle">Inventory Type</td>
+            <td valign="middle">Type of digital Inventory (platform, Format, FEP) e.g. Console FEP, Mobile App</td>
+        </tr>
+        <tr>
+            <td valign="middle">Targeting Type 1</td>
+            <td valign="middle">Behavioral, re-targeting, contextual, demographics, etc.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Targeting Type 2</td>
+            <td valign="middle">Behavioral, re-targeting, contextual, demographics, etc.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Source Actual Impressions</td>
+            <td valign="middle">The actual source of the delivered units. This could be the third party ad server or delivery data coming in from Prisma. The selection of the source is dependent on the cost method.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Date</td>
+            <td valign="middle">Date of the delivery within the campaign flight date.</td>
+        </tr>
+        <tr>
+            <td style="border-right:none"></td>
+            <td style="border-left:none"></td>
+        </tr>
+        <tr>
+            <td valign="middle" style="font-weight:bold">Metric Name</td>
+            <td valign="middle" style="font-weight:bold">Description</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions </td>
+            <td valign="middle">
+                <p>Number of impressions the campaign is scheduled to achieve.</p>
+                <p>Note: Planned Impressions may not always be established in Prisma by the media planning team, so it's possible to see delivered impressions where no impressions are planned. </p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Impressions</td>
+            <td valign="middle">Number of impressions delivered for the campaign. This value is always uncapped.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Impressions Left </td>
+            <td valign="middle">Number of planned impressions left. [planned impressions - actual impressions] </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Impressions Delivered </p>
+                <p>("Impressions Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned impressions delivered.
+                [actual impressions / planned impressions]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Impressions Left</td>
+            <td valign="middle">
+                Percentage of planned impressions left.
+                [planned impressions left/ planned impressions]
+            </td>
+        </tr>
+		<tr>
+      <td valign="middle">Payable Impressions</td>
+      <td valign="middle"> The number of impressions that are considered payable as per the GroupM viewability guidelines. They are the human viewable impression counts, include the scaling factor for non-measured, and accommodates the GroupM rules for Large Ad Units and Multi-Ad Units. </td>
+    </tr>
+	<tr>
+      <td valign="middle">Measurable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point. These are Fraud free impressions where measurement can be attempted.  </td>
+    </tr>
+	<tr>
+      <td valign="middle">Viewable Impressions</td>
+      <td valign="middle"> The number of impressions where it was possible to determine whether the ad surface was 100% on-screen and were determined to be delivered to a human end point </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Measurable</td>
+      <td valign="middle"> [Measurable Impressions]/ ([Measurable Impressions] + [NonMeasuredImpressions]) </td>
+    </tr>
+	<tr>
+      <td valign="middle">% Viewable</td>
+      <td valign="middle"> [Viewable Impressions] / [Measurable Impressions] </td>
+    </tr>
+        <tr>
+            <td valign="middle">Planned Cost</td>
+            <td valign="middle">Total planned spend for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle"><p>Actual Capped Cost</p></td>
+            <td valign="middle">
+                <p>Capping methods:</p>
+                <p>Date Capped:</p>
+                <p>Cost is "date capped", meaning that no spend is reported outside of planned flight dates.</p>
+                <p>Cost Capped:</p>
+                <p>
+                    This occurs at the package and flight level. Which means:</p>
+                    <ol>
+                        <li>Capping will only occur when the budget for a package over the duration of its entire flight is exceeded.</li>
+                        <li>Levels of aggregation higher than package may show Actual Uncapped Cost exceeding Planned Cost, while Actual Capped Cost is lower than Planned Cost, if some packages over-deliver while others under-deliver.</li>
+                        <li>Placements in a package may show arbitrary over-delivery and under-delivery, while the entire package’s capped cost will not exceed the plan.</li>
+                    </ol>
+                    <p>Because capping occurs at a package level, which may add complexity at lower or higher levels of aggregation, the most reliable way to monitor pacing is via the running sum reports.</p>
+                    <p></p>
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">Actual Uncapped Cost</td>
+            <td valign="middle">Total actual spend reported for the campaign.</td>
+        </tr>
+        <tr>
+            <td valign="middle">Planned Cost Left</td>
+            <td valign="middle">
+                Planned amount left in the campaign.
+                [planned cost - actual capped cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">
+                <p>% Actual Cost Delivered </p>
+                <p>("Budget Pacing") </p>
+            </td>
+            <td valign="middle">
+                Percentage of planned cost spent.
+                [actual capped cost / planned cost]
+            </td>
+        </tr>
+        <tr>
+            <td valign="middle">% Planned Cost Left </td>
+            <td valign="middle">
+                Percentage of planned cost left in the campaign.
+                [planned cost left / planned cost]
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+                
+
+        </div>
+    </md-dialog-content>
+</md-dialog>

@@ -1,0 +1,85 @@
+<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+	<div class="md-whiteframe-2dp dap-nopadding">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<md-button aria-label="More" ng-click="$ctrl.navigate('MyViz')" class="md-icon-button">
+					<md-icon class="material-icons">arrow_back</md-icon>
+				</md-button>
+				<h2>Audit Log: {{$ctrl.visualId == null ? 'All Visuals' : $ctrl.selectedItem.name}}</h2>
+			</div>
+		</md-toolbar>
+
+		<div layout="row">
+			<div flex>
+				<div md-colors="::{background: 'background-300'}" style="padding:20px">Views By Date</div>
+				<div flex style="padding:20px">
+					<canvas class="chart chart-bar" ng-if="$ctrl.viewsByDate" chart-data="$ctrl.viewsByDate" chart-labels="$ctrl.viewsByDateLabels"
+						chart-dataset-override="$ctrl.viewsByDateDataset"></canvas>
+				</div>
+				<dap-list-loading flex list="$ctrl.viewsByDate"></dap-list-loading>
+			</div>
+			<div flex="40">
+				<div md-colors="::{background: 'background-300'}" style="padding:20px">Views By User</div>
+				<div flex style="padding:20px">
+					<canvas class="chart chart-doughnut" ng-if="$ctrl.viewsByUser" chart-data="$ctrl.viewsByUser" chart-labels="$ctrl.viewsByUserLabels"
+						chart-colors="$ctrl.chartColors" chart-options="$ctrl.viewsByUserOptions"></canvas>
+				</div>
+				<dap-list-loading flex list="$ctrl.viewsByUser"></dap-list-loading>
+			</div>
+			<div layout="column" layout-align="start center">
+				<div md-colors="::{background: 'background-300'}" style="padding:20px;width: 100%;">&nbsp;</div>
+				<div style="background:#71d0ce;margin:8px;width:130px;padding:16px;">
+					<div class="md-display-3" style="text-align: center;">{{$ctrl.totalViews}}</div>
+					<div class="md-body-2" style="text-align: center;font-size:12px;">Total Views</div>
+				</div>
+				<div style="background:#fbc583;margin:8px;margin-top:0;width:130px;padding:16px;">
+					<div class="md-display-3" style="text-align: center;">{{$ctrl.totalUsers}}</div>
+					<div class="md-body-2" style="text-align: center;font-size:12px;">Total Users</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Filter -->
+		<dap-search search-model="$ctrl.search" on-search="$ctrl.filter(search)"></dap-search>
+
+		<!-- Content -->
+		<md-content flex>
+			<div layout="row" md-colors="::{background: 'background-400'}">
+				<div flex style="padding:20px">
+					<label>Date</label>
+				</div>
+				<div flex ng-if="$ctrl.visualId == null" style="padding:20px">
+					<label>Visual Name</label>
+				</div>
+				<div flex style="padding:20px">
+					<label>User</label>
+				</div>
+				<div flex style="padding:20px">
+					<label>Action</label>
+				</div>
+			</div>
+			<md-divider></md-divider>
+			<div ng-repeat="item in $ctrl.auditlog">
+				<div flex layout="row">
+					<div flex style="padding:20px;">
+						{{:: item.date | date: 'medium' }}
+					</div>
+					<div flex ng-if="$ctrl.visualId == null" style="padding:20px">
+						{{:: $ctrl.visuals[item.assetSubId].name }}
+					</div>
+					<div flex style="padding:20px;">
+						{{:: item.username }}
+					</div>
+					<div flex style="padding:20px;">
+						{{:: item.action }}
+					</div>
+				</div>
+				<md-divider ng-if="!$last"></md-divider>
+			</div>
+			<dap-list-loading flex list="$ctrl.auditlog"></dap-list-loading>
+		</md-content>
+	</div>
+
+</md-content>

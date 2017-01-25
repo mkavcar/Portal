@@ -1,0 +1,32 @@
+<md-content layout-padding flex ng-repeat="rootItem in $ctrl.menu" md-colors="::{'background-color': 'background-200'}" style="padding:16px 16px 4px 16px;">
+	<div class="dap-nopadding">
+
+		<!-- Header -->
+		<h2 class="md-headline" style="padding-left: 8px;margin-left: 8px;border-left:4px solid transparent;" md-colors="::{'border-left-color': 'accent-500'}">{{:: rootItem.name}}
+			<md-icon class="material-icons">chevron_right</md-icon>
+		</h2>
+
+		<!-- Content -->
+		<md-content flex md-colors="::{'background-color': 'background-200'}">
+			<div flex layout="column" layout-gt-sm="row" ng-repeat="row in ::rootItem.submenu">
+				<md-card flex class="dap-viz-card {{:: (item.hasAccess === false) ? '' : 'dap-button'}}" ng-repeat="item in ::row" ng-click="$ctrl.navigate(item)">
+					<md-toolbar class="md-accent md-hue-3" style="{{:: (item.hasAccess === false) ? 'background: #888;' : ''}}">
+						<div class="md-toolbar-tools">
+							<md-icon class="material-icons">{{:: item.icon || rootItem.icon}}</md-icon>
+							<h2>&nbsp;{{:: item.name}}</h2>
+							<span flex></span>
+							<md-button class="md-accent md-hue-3 md-raised" ng-click="$ctrl.access(null, $event)" ng-if="item.hasAccess === false">
+								<md-icon class="material-icons dap-mgr-6">group_add</md-icon>Request Access
+							</md-button>
+						</div>
+					</md-toolbar>
+					<md-card-content class="md-body-1" flex>
+						<p>{{:: item.description }}</p>
+					</md-card-content>
+				</md-card>
+				<div flex ng-if="row.length === 1" style="margin:8px"></div>
+			</div>
+		</md-content>
+	</div>
+</md-content>
+<dap-list-loading flex list="$ctrl.menu"></dap-list-loading>

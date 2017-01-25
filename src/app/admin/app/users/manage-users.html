@@ -1,0 +1,63 @@
+<form novalidate name="$ctrl.dataForm">
+
+	<!-- Header -->
+	<md-toolbar class="md-accent md-hue-3">
+		<div class="md-toolbar-tools">
+			<h2>{{:: ($ctrl.isUpdate) ? 'Edit' : 'Add' }} User</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="$ctrl.close()">
+				<md-icon class="material-icons">clear</md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+
+	<!-- Content -->
+	<md-dialog-content>
+		<div class="md-dialog-content" layout="column">
+			<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+				<label>User Id</label>
+				<input ng-model="$ctrl.user.id" name="userid" ng-disabled="$ctrl.isUpdate" required maxlength="100" />
+				<div ng-messages="$ctrl.dataForm.userid.$error">
+					<ng-message when="required">This field is required</ng-message>
+				</div>
+			</md-input-container>
+			<div layout-gt-xs="row">
+				<md-input-container class="md-block md-accent md-hue-3" flex>
+					<label>First Name</label>
+					<input ng-model="$ctrl.user.firstName" ng-disabled="$ctrl.user.type == 'ADFS'" maxlength="50" />
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex>
+					<label>Last Name</label>
+					<input ng-model="$ctrl.user.lastName" ng-disabled="$ctrl.user.type == 'ADFS'" maxlength="50" />
+				</md-input-container>
+			</div>
+			<div layout-gt-xs="row">
+				<md-input-container class="md-block md-accent md-hue-3" flex>
+					<label>Agency</label>
+					<input ng-model="$ctrl.user.agency" maxlength="50" />
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex>
+					<label>Client</label>
+					<input ng-model="$ctrl.user.client" maxlength="50" />
+				</md-input-container>
+			</div>
+			<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+				<label>Roles</label>
+				<md-chips ng-model="$ctrl.user.roles" md-autocomplete-snap md-require-match="true">
+					<md-autocomplete md-selected-item="$ctrl.selectedItem" md-no-cache="true" md-search-text="$ctrl.searchText" md-item-text="item"
+						md-items="item in $ctrl.querySearch($ctrl.searchText)" placeholder="Select a role">
+						<span md-highlight-text="$ctrl.searchText">{{item}}</span>
+					</md-autocomplete>
+				</md-chips>
+			</md-input-container>
+		</div>
+	</md-dialog-content>
+
+	<!-- Actions -->
+	<md-dialog-actions layout="row">
+		<md-button class="md-raised" ng-click="$ctrl.close()">Cancel</md-button>
+		<md-button class="md-raised md-accent md-hue-3" ng-click="$ctrl.submit()" ng-disabled="$ctrl.dataForm.$invalid">
+			<md-icon class="material-icons dap-mgr-6">send</md-icon>Submit
+		</md-button>
+	</md-dialog-actions>
+</form>

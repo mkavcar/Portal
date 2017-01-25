@@ -1,0 +1,23 @@
+<!-- Header -->
+<md-toolbar class="md-accent md-hue-3">
+	<div class="md-toolbar-tools">
+		<h2>My Notifications</h2>
+	</div>
+</md-toolbar>
+
+<!-- Content -->
+<md-content style="width:300px;max-height:350px;">
+	<md-list class="dap-nopadding">
+		<md-list-item class="md-long-text" ng-repeat-start="item in ctrl.notifications" ng-click="select(item)" ng-class="{'dap-unread': !item.isRead}">
+			<div class="md-list-item-text" style="padding-top:8px;">
+				<div class="md-subhead">{{::item.title}}</div>
+				<div class="md-caption" style="line-height: 12px;" md-colors="::{color: 'background-500'}">{{::item.createdDate | date: 'medium'}}</div>
+				<p class="md-body-1">
+					{{:: item.message.length > 500 ? item.message.substr(0, 499) + '...' : item.message }}
+				</p>
+			</div>
+		</md-list-item>
+		<md-divider ng-repeat-end></md-divider>
+	</md-list>
+	<dap-list-loading flex list="ctrl.notifications"></dap-list-loading>
+</md-content>

@@ -1,0 +1,24 @@
+<!-- Content -->
+<div style="{{ $ctrl.orientation === 'horizontal' ? 'padding-top:0;':'' }}">
+	<label class="md-caption" style="color: rgba(0,0,0,0.54);">Theme</label>
+	<md-radio-group ng-model="$ctrl.item.theme" class="md-accent md-hue-3" layout="row" style="{{ $ctrl.orientation === 'horizontal' ? 'padding: 12px 8px 0;':'padding: 8px 0px 16px;' }}">
+		<md-radio-button value="default">Default</md-radio-button>
+		<md-radio-button value="custom">Custom</md-radio-button>
+	</md-radio-group>
+</div>
+<md-input-container ng-if="$ctrl.item.theme === 'custom'" class="md-block md-accent md-hue-3" style="{{ $ctrl.orientation === 'horizontal' ? 'margin-bottom:0;':'' }}"
+	flex-gt-sm>
+	<label>Primary Color</label>
+	<input ng-model="$ctrl.item.customPrimaryColor" name="primaryColor" placeholder="#FFFFFF" maxlength="7" />
+</md-input-container>
+<md-input-container ng-if="$ctrl.item.theme === 'custom'" class="md-block md-accent md-hue-3" style="{{ $ctrl.orientation === 'horizontal' ? 'margin-bottom:0;':'' }}"
+	flex-gt-sm>
+	<label>Accent Color</label>
+	<input ng-model="$ctrl.item.customAccentColor" name="primaryColor" placeholder="#FFFFFF" maxlength="7" />
+</md-input-container>
+<span ng-if="$ctrl.orientation === 'horizontal'" flex></span>
+
+<!-- Actions -->
+<md-button class="md-raised dap-nopadding" style="{{ $ctrl.orientation === 'horizontal' ? 'margin: auto 8px;':'' }}" ng-click="$ctrl.hide($ctrl.item)">Cancel</md-button>
+<md-button class="md-raised md-accent md-hue-3 dap-nopadding" style="{{ $ctrl.orientation === 'horizontal' ? 'margin: auto 8px;':'' }}"
+	ng-click="$ctrl.save($ctrl.item)" ng-disabled="!$ctrl.item.customPrimaryColor && !$ctrl.item.customAccentColor">Save</md-button>

@@ -1,0 +1,89 @@
+<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+	<div class="md-whiteframe-2dp dap-nopadding">
+
+		<!-- Header -->
+		<md-toolbar class="md-accent md-hue-3">
+			<div class="md-toolbar-tools">
+				<h2>
+					<span ng-click="$ctrl.selectFolder(null)" class="dap-button dap-mgr-6">Dashboards <span ng-if="$ctrl.visuals.length" class="dap-badge" style="background:#fafafa;" md-colors="::{'color': 'accent-A700'}">{{:: $ctrl.visuals.length}}</span></span>
+				</h2>
+				<span flex></span>
+				<md-button class="md-icon-button" ng-click="$ctrl.isListView = !$ctrl.isListView">
+					<md-tooltip direction="top">{{ ($ctrl.isListView) ? 'Tile View' : 'List View' }}</md-tooltip>
+					<md-icon class="material-icons">{{ ($ctrl.isListView) ? 'view_module' : 'view_list' }}</md-icon>
+				</md-button>
+				<md-menu md-position-mode="target-right target" ng-if="$ctrl.isAdmin">
+					<md-button aria-label="actions" class="md-icon-button dap-nomargin" ng-click="$mdOpenMenu($event)">
+						<md-icon class="material-icons">more_vert</md-icon>
+					</md-button>
+					<md-menu-content width="3">
+						<md-menu-item>
+							<md-button ng-click="$ctrl.navigate('VizAuditlogAll')">
+								<md-icon class="material-icons">schedule</md-icon>Audit Log
+							</md-button>
+						</md-menu-item>
+					</md-menu-content>
+				</md-menu>
+			</div>
+		</md-toolbar>
+
+		<!-- Filter & Sort -->
+		<dap-search sort-fields="$ctrl.sortFields" search-model="$ctrl.search" default-sort="updatedDate desc" on-sort="$ctrl.sort(sort)"
+			on-search="$ctrl.filter(search)"></dap-search>
+
+		<!-- Content -->
+
+		<!-- Tile View -->
+		<div ng-if="!$ctrl.isListView">
+
+			<!-- Visuals -->
+			<md-content ng-if="$ctrl.visuals.length" layout-xs="column" layout="row" layout-align="left" layout-wrap style="padding:8px">
+				<md-card ng-repeat="item in $ctrl.visuals track by item.id" style="width:240px;" class="dap-viz-card">
+					<md-toolbar class="md-accent md-hue-3" style="min-height:40px;height:40px;">
+						<div class="md-toolbar-tools" style="padding:0 8px;">
+							<span flex class="md-body-1 dap-ellipsis dap-button" ng-click="$ctrl.navigate('CcrDashboardView', item.id)"><md-tooltip ng-if=":: item.name.length > 28" md-direction="top">{{::item.name}}</md-tooltip>{{::item.name}}</span>
+						</div>
+					</md-toolbar>
+					<md-card-content class="dap-button" ng-click="$ctrl.navigate('CcrDashboardView', item.id)" style="text-align: center;padding-bottom:0">
+						<img ng-src="{{:: $ctrl.baseUrl + (item.previewImageName || 'default') + '.png' }}" />
+					</md-card-content>
+					<md-card-content ng-if="($ctrl.isAdmin || $ctrl.isCreator) && !item.showColor" class="md-caption" flex>
+						<span ng-if="item.tags" ng-repeat="tag in ::item.tags.split(',')" class="dap-button" style="margin-right:6px;white-space: nowrap;"
+							ng-click="$ctrl.search = tag">
+                        	<md-icon class="material-icons ng-scope md-accent md-hue-3" style="font-size: 1.5em;height:20px;min-height:20px;width:20px;min-width:20px;">local_offer</md-icon>
+                        	{{::tag}}
+                    	</span>
+					</md-card-content>
+				</md-card>
+			</md-content>
+		</div>
+
+		<!-- List View -->
+		<md-content layout="column" ng-if="$ctrl.isListView">
+			<!-- Visuals -->
+			<div ng-repeat="item in $ctrl.visuals track by item.id" class="dap-viz-card dap-button">
+				<div layout="row">
+					<div style="padding:15px">
+						<md-icon class="material-icons">equalizer</md-icon>
+					</div>
+					<div style="padding:15px" class="dap-vertalign dap-button" flex="40" ng-click="$ctrl.navigate('CcrDashboardView', item.id)">
+						{{::item.name}}
+					</div>
+					<div style="padding:15px" class="md-caption dap-vertalign" flex>
+						<span ng-if="($ctrl.isAdmin || $ctrl.isCreator)">
+							<span ng-if="item.tags" ng-repeat="tag in ::item.tags.split(',')" class="dap-button" style="margin-right:6px;white-space: nowrap;"
+								ng-click="$ctrl.search = tag">
+								<md-icon class="material-icons ng-scope md-accent md-hue-3" style="font-size: 1.5em;height:20px;min-height:20px;width:20px;min-width:20px;">local_offer</md-icon>
+								{{::tag}}
+							</span>
+						</span>
+					</div>
+				</div>
+				<md-divider></md-divider>
+			</div>
+		</md-content>
+
+		<dap-list-loading ng-hide="$ctrl.folders.length > 0 && $ctrl.visuals.length == 0" flex list="$ctrl.visuals"></dap-list-loading>
+
+	</div>
+</md-content>

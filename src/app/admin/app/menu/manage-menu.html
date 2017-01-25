@@ -1,0 +1,69 @@
+<form novalidate name="$ctrl.dataForm">
+
+	<!-- Header -->
+	<md-toolbar class="md-accent md-hue-3">
+		<div class="md-toolbar-tools">
+			<h2>{{:: ($ctrl.operation === 'edit') ? 'Edit' : 'Add' }} Menu Item</h2>
+			<span flex></span>
+			<md-button class="md-icon-button" ng-click="$ctrl.close()">
+				<md-icon class="material-icons">clear</md-icon>
+			</md-button>
+		</div>
+	</md-toolbar>
+
+	<!-- Content -->
+	<md-dialog-content>
+		<div class="md-dialog-content" layout="column">
+			<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+				<input ng-model="$ctrl.menu.name" name="name" placeholder="Name" required />
+				<div ng-messages="$ctrl.dataForm.name.$error">
+					<ng-message when="required">This field is required</ng-message>
+				</div>
+			</md-input-container>
+			<div layout-gt-sm="row">
+				<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+					<input ng-model="$ctrl.menu.order" name="order" placeholder="Order" required type="number" />
+					<div ng-messages="$ctrl.dataForm.order.$error">
+						<ng-message when="required">This field is required</ng-message>
+					</div>
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+					<label>Type</label>
+					<md-select ng-model="$ctrl.menu.type" placeholder="Type">
+						<md-option value="header">Header</md-option>
+						<md-option value="state">State (Component Link)</md-option>
+						<md-option value="link">Link</md-option>
+					</md-select>
+				</md-input-container>
+				<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+					<input ng-model="$ctrl.menu.icon" name="icon" placeholder="Icon" />
+					<md-icon class="material-icons">{{$ctrl.menu.icon}}</md-icon>
+				</md-input-container>
+			</div>
+			<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm ng-if="$ctrl.menu.type !== 'header'">
+				<input ng-model="$ctrl.menu.url" name="url" placeholder="Url" />
+			</md-input-container>
+			<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+				<label>Roles</label>
+				<md-chips ng-model="$ctrl.menu.roles" md-autocomplete-snap md-require-match="true">
+					<md-autocomplete md-selected-item="$ctrl.selectedItem" md-no-cache="true" md-search-text="$ctrl.searchText" md-item-text="item"
+						md-items="item in $ctrl.querySearch($ctrl.searchText)" placeholder="Select a role">
+						<span md-highlight-text="$ctrl.searchText">{{item}}</span>
+					</md-autocomplete>
+				</md-chips>
+			</md-input-container>
+			<md-input-container class="md-block md-accent md-hue-3" flex-gt-sm>
+				<textarea ng-model="$ctrl.menu.description" placeholder="Description" name="message" rows="3" style="overflow: inherit;max-height: 150px!important;"
+					md-maxlength="4000"></textarea>
+			</md-input-container>
+		</div>
+	</md-dialog-content>
+
+	<!-- Actions -->
+	<md-dialog-actions layout="row">
+		<md-button class="md-raised" ng-click="$ctrl.close()">Cancel</md-button>
+		<md-button class="md-raised md-accent md-hue-3" ng-click="$ctrl.submit()" ng-disabled="$ctrl.dataForm.$invalid">
+			<md-icon class="material-icons dap-mgr-6">send</md-icon>Submit
+		</md-button>
+	</md-dialog-actions>
+</form>

@@ -1,0 +1,210 @@
+<div layout="column" layout-gt-sm="row" style="padding:8px;">
+	<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-1dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<h2>All Agencies - By Country</h2>
+				</div>
+			</md-toolbar>
+
+			<!-- Content -->
+			<md-content flex>
+				<div md-colors="::{background: 'background-300'}" style="padding:20px">Top 10 ROI by Country</div>
+				<div flex style="padding:20px">
+					<canvas class="chart chart-bar" ng-if="$ctrl.roiByCountryChartData" chart-data="$ctrl.roiByCountryChartData" chart-labels="$ctrl.roiByCountryChartLabels"
+						chart-colors="$ctrl.chartColors"></canvas>
+				</div>
+				<dap-list-loading flex list="$ctrl.roiByCountryChartData"></dap-list-loading>
+				<div flex>
+					<div layout="row" md-colors="::{background: 'background-300'}">
+						<div flex style="padding:20px">
+							<label>Country</label>
+						</div>
+						<div flex style="padding:20px" align="right">
+							<label># Samples</label>
+						</div>
+						<div flex style="padding:20px" align="right">
+							<label>Avg ROI</label>
+						</div>
+					</div>
+					<md-divider></md-divider>
+					<div style="max-height:300px;overflow: auto;">
+						<div ng-repeat="item in $ctrl.roiByCountry">
+							<div flex layout="row">
+								<div flex style="padding:20px;">
+									{{:: item.name }}
+								</div>
+								<div flex style="padding:20px;" align="right">
+									{{:: item.numberOfSamples | number:0 }}
+								</div>
+								<div flex style="padding:20px;" align="right">
+									{{:: item.averageROI | number:4 }}
+								</div>
+							</div>
+							<md-divider ng-if="!$last"></md-divider>
+						</div>
+					</div>
+				</div>
+				<dap-list-loading flex list="$ctrl.roiByCountry"></dap-list-loading>
+			</md-content>
+
+		</div>
+	</md-content>
+	<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-1dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<h2>All Agencies - By Communications Channel</h2>
+				</div>
+			</md-toolbar>
+
+			<!-- Content -->
+			<md-content flex>
+				<div md-colors="::{background: 'background-300'}" style="padding:20px">Top 10 ROI by Communication Channel</div>
+				<div flex style="padding:20px">
+					<canvas class="chart chart-bar" ng-if="$ctrl.roiByChannelChartData" chart-data="$ctrl.roiByChannelChartData" chart-labels="$ctrl.roiByChannelChartLabels"
+						chart-colors="$ctrl.chartColors"></canvas>
+				</div>
+				<dap-list-loading flex list="$ctrl.roiByChannelChartData"></dap-list-loading>
+				<div layout="row" md-colors="::{background: 'background-300'}">
+					<div flex style="padding:20px">
+						<label>Channel</label>
+					</div>
+					<div flex style="padding:20px" align="right">
+						<label># Samples</label>
+					</div>
+					<div flex style="padding:20px" align="right">
+						<label>Avg ROI</label>
+					</div>
+				</div>
+				<md-divider></md-divider>
+				<div style="max-height:300px;overflow: auto;">
+					<div ng-repeat="item in $ctrl.roiByChannel">
+						<div flex layout="row">
+							<div flex style="padding:20px;">
+								{{:: item.name }}
+							</div>
+							<div flex style="padding:20px;" align="right">
+								{{:: item.numberOfSamples | number:0 }}
+							</div>
+							<div flex style="padding:20px;" align="right">
+								{{:: item.averageROI | number:4 }}
+							</div>
+						</div>
+						<md-divider ng-if="!$last"></md-divider>
+					</div>
+				</div>
+				<dap-list-loading flex list="$ctrl.roiByChannel"></dap-list-loading>
+			</md-content>
+
+		</div>
+	</md-content>
+</div>
+<div layout="column" layout-gt-sm="row" style="padding:8px;">
+	<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-1dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<h2>All Agencies - By Category</h2>
+				</div>
+			</md-toolbar>
+
+			<!-- Content -->
+			<md-content flex>
+				<div md-colors="::{background: 'background-300'}" style="padding:20px">Top 10 ROI by Category</div>
+				<div flex style="padding:20px">
+					<canvas class="chart chart-bar" ng-if="$ctrl.roiByCategoryChartData" chart-data="$ctrl.roiByCategoryChartData" chart-labels="$ctrl.roiByCategoryChartLabels"
+						chart-colors="$ctrl.chartColors"></canvas>
+				</div>
+				<dap-list-loading flex list="$ctrl.roiByCategoryChartData"></dap-list-loading>
+				<div layout="row" md-colors="::{background: 'background-300'}">
+					<div flex style="padding:20px">
+						<label>Category</label>
+					</div>
+					<div flex style="padding:20px" align="right">
+						<label># Samples</label>
+					</div>
+					<div flex style="padding:20px" align="right">
+						<label>Avg ROI</label>
+					</div>
+				</div>
+				<md-divider></md-divider>
+				<div style="max-height:300px;overflow: auto;">
+					<div ng-repeat="item in $ctrl.roiByCategory">
+						<div flex layout="row">
+							<div flex style="padding:20px;">
+								{{:: item.name }}
+							</div>
+							<div flex style="padding:20px;" align="right">
+								{{:: item.numberOfSamples | number:0 }}
+							</div>
+							<div flex style="padding:20px;" align="right">
+								{{:: item.averageROI | number:4 }}
+							</div>
+						</div>
+						<md-divider ng-if="!$last"></md-divider>
+					</div>
+				</div>
+				<dap-list-loading flex list="$ctrl.roiByCategory"></dap-list-loading>
+			</md-content>
+
+		</div>
+	</md-content>
+	<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-1dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<h2>All Agencies - By Sub Category</h2>
+				</div>
+			</md-toolbar>
+
+			<!-- Content -->
+			<md-content flex>
+				<div md-colors="::{background: 'background-300'}" style="padding:20px">Top 10 ROI by SubCategory</div>
+				<div flex style="padding:20px">
+					<canvas class="chart chart-bar" ng-if="$ctrl.roiBySubCategoryChartData" chart-data="$ctrl.roiBySubCategoryChartData" chart-labels="$ctrl.roiBySubCategoryChartLabels"
+						chart-colors="$ctrl.chartColors"></canvas>
+				</div>
+				<dap-list-loading flex list="$ctrl.roiBySubCategoryChartData"></dap-list-loading>
+				<div layout="row" md-colors="::{background: 'background-300'}">
+					<div flex style="padding:20px">
+						<label>SubCategory</label>
+					</div>
+					<div flex style="padding:20px" align="right">
+						<label># Samples</label>
+					</div>
+					<div flex style="padding:20px" align="right">
+						<label>Avg ROI</label>
+					</div>
+				</div>
+				<md-divider></md-divider>
+				<div style="max-height:300px;overflow: auto;">
+					<div ng-repeat="item in $ctrl.roiBySubCategory">
+						<div flex layout="row">
+							<div flex style="padding:20px;">
+								{{:: item.name }}
+							</div>
+							<div flex style="padding:20px;" align="right">
+								{{:: item.numberOfSamples | number:0 }}
+							</div>
+							<div flex style="padding:20px;" align="right">
+								{{:: item.averageROI | number:4 }}
+							</div>
+						</div>
+						<md-divider ng-if="!$last"></md-divider>
+					</div>
+				</div>
+				<dap-list-loading flex list="$ctrl.roiBySubCategory"></dap-list-loading>
+			</md-content>
+
+		</div>
+	</md-content>
+</div>

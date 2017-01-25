@@ -1,0 +1,14 @@
+<!-- Nav -->
+<md-nav-bar md-selected-nav-item="$ctrl.selectedTab">
+	<md-nav-item md-nav-click="$ctrl.navigate('AppAdminUsers')" name="users">
+		<md-icon class="material-icons dap-mgr-6" md-colors="::{color: 'accent-A400'}">account_circle</md-icon>Users</md-nav-item>
+	<md-nav-item md-nav-click="$ctrl.navigate('AppAdminMenu')" name="menu">
+		<md-icon class="material-icons dap-mgr-6" md-colors="::{color: 'accent-A400'}">apps</md-icon>Menu</md-nav-item>
+	<md-nav-item md-nav-click="$ctrl.navigate('AppAdminFeedback')" name="feedback">
+		<md-icon class="material-icons dap-mgr-6" md-colors="::{color: 'accent-A400'}">comment</md-icon>Feedback</md-nav-item>
+	<md-nav-item md-nav-click="$ctrl.navigate('AppAdminNotifications')" name="notifications">
+		<md-icon class="material-icons dap-mgr-6" md-colors="::{color: 'accent-A400'}">notifications</md-icon>Notifications</md-nav-item>
+</md-nav-bar>
+
+<!-- Content -->
+<ng-outlet></ng-outlet>

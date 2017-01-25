@@ -1,0 +1,56 @@
+<!-- Add Note -->
+<div layout="row" style="padding-left:8px;{{ ($ctrl.accentColor) ? 'background-color:'+$ctrl.accentColor : 'background-color:'+$ctrl.defaultAccentColor }}">
+	<md-input-container flex md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+		<md-icon class="material-icons" md-colors="::{color: 'background-700'}">comment</md-icon>
+		<!--<input ng-model="$ctrl.note" placeholder="Add Note" type="text">-->
+		<textarea ng-model="$ctrl.note" placeholder="Add Note" rows="1" style="overflow: inherit;max-height: 80px!important;{{ ($ctrl.accentColor) ? 'color:'+$ctrl.accentColor : '' }}"></textarea>
+	</md-input-container>
+	<md-button style="min-width:1px;max-height: 36px;" ng-disabled="!$ctrl.note" ng-click="$ctrl.add($ctrl.note)">
+		<md-tooltip md-direction="top">add</md-tooltip>
+		<md-icon class="material-icons">add</md-icon>
+	</md-button>
+</div>
+
+<!-- Filter -->
+<div layout="row" md-colors="::{background: 'primary-400'}" style="padding-left:8px;">
+	<md-content md-colors="::{background: 'primary-400'}" flex>
+		<md-input-container md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+			<md-icon class="material-icons md-accent" style="{{ ($ctrl.accentColor) ? 'color:'+$ctrl.accentColor : '' }}">search</md-icon>
+			<input ng-model="$ctrl.search" placeholder="Search" ng-model-options="{ debounce: 100 }" type="text" md-colors="::{color: 'accent-A100'}"
+				style="{{ ($ctrl.accentColor) ? 'color:'+$ctrl.accentColor : '' }}" aria-label="Search">
+		</md-input-container>
+	</md-content>
+	<md-button style="min-width:1px;" ng-disabled="!$ctrl.notes || $ctrl.notes.length == 0" href="{{$ctrl.getExportUrl()}}">
+		<md-tooltip md-direction="top">export as CSV</md-tooltip>
+		<md-icon class="material-icons">cloud_download</md-icon>
+	</md-button>
+</div>
+
+<!-- Content -->
+<md-content style="max-height:736px;" md-colors="::{background: 'background-200'}">
+	<md-list class="dap-nopadding">
+		<md-list-item ng-repeat-start="item in $ctrl.notes | filter: $ctrl.filter as filteredList track by item.id" class="md-body-1"
+			style="padding:8px;">
+			<div layout="column" flex>
+				<div layout="row">
+					<md-icon class="material-icons md-accent md-hue-3" style="margin-right: 8px;{{ ($ctrl.primaryColor) ? 'color:'+$ctrl.primaryColor : '' }}">comment</md-icon>
+					<div flex>
+						{{::item.authorDisplayName}}
+						<div class="md-caption" style="line-height: 12px;">{{::item.updatedDate | date:'short'}}</div>
+					</div>
+					<md-button ng-if="$ctrl.canEdit(item)" ng-click="$ctrl.edit(item, $event)" style="margin: 0;min-width: 1px;">
+						<md-tooltip md-direction="top">edit</md-tooltip>
+						<md-icon class="material-icons">edit</md-icon>
+					</md-button>
+					<md-button ng-if="$ctrl.canEdit(item)" ng-click="$ctrl.remove(item, $event)" style="margin: 0;min-width: 1px;">
+						<md-tooltip md-direction="top">delete</md-tooltip>
+						<md-icon class="material-icons">delete</md-icon>
+					</md-button>
+				</div>
+				<div style="padding-top: 12px;padding-left: 32px;white-space: pre;">{{::item.message}}</div>
+			</div>
+		</md-list-item>
+		<md-divider ng-repeat-end></md-divider>
+	</md-list>
+</md-content>
+<dap-list-loading flex list="$ctrl.notes" filteredlist="filteredList"></dap-list-loading>

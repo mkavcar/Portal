@@ -1,0 +1,35 @@
+<!-- Login -->
+<md-button ng-if="!$ctrl.isLoggedIn()" style="min-width: 1%;margin: 0;" href="/auth/login">
+	<md-icon class="material-icons dap-mgr-6">person</md-icon>Login
+</md-button>
+
+<!-- User Menu -->
+<md-menu ng-if="$ctrl.isLoggedIn()" md-position-mode="target-right target">
+	<md-button ng-click="$mdOpenMenu($event)" class="md-icon-button">
+		<md-icon class="material-icons">person</md-icon>
+	</md-button>
+	<md-menu-content width="5">
+		<md-menu-item style="margin:10px 0">
+			<div layout="row" class="dap-center">
+				<div>
+					<md-icon class="material-icons md-accent md-hue-2" style="margin:auto 16px auto 0;">account_circle</md-icon>
+				</div>
+				<div>
+					{{:: $ctrl.getUser().FirstName + ' ' + $ctrl.getUser().LastName }}
+					<div class="md-caption">{{:: $ctrl.getUser().Email || $ctrl.getUser().Id }}</div>
+				</div>
+			</div>
+		</md-menu-item>
+		<md-divider></md-divider>
+		<md-menu-item>
+			<md-button ng-click="$ctrl.settings($event)">
+				<md-icon class="material-icons">settings</md-icon>My Settings
+			</md-button>
+		</md-menu-item>
+		<md-menu-item>
+			<md-button href="/auth/logout">
+				<md-icon class="material-icons">power_settings_new</md-icon>Logout
+			</md-button>
+		</md-menu-item>
+	</md-menu-content>
+</md-menu>

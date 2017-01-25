@@ -1,0 +1,157 @@
+<div flex layout style="margin: 8px 16px 0;">
+	<span flex></span>
+	<md-icon class="material-icons">public</md-icon>
+	<md-select ng-init="$ctrl.region = 'NA'" ng-model="$ctrl.region" class="md-no-underline dap-nomargin">
+		<md-option value="NA">North America</md-option>
+		<md-option value="APAC">Asia Pacific</md-option>
+	</md-select>
+</div>
+<div layout="column" layout-gt-sm="row" style="padding:8px;">
+	<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-1dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<md-icon class="material-icons dap-mgr-6">assessment</md-icon>
+					<h2>Pacing Reports</h2>
+					<span flex></span>
+					<md-button aria-label="Info" ng-click="$ctrl.info('pacing', $event)" class="md-icon-button dap-nomargin">
+						<md-tooltip md-direction="top">more details</md-tooltip>
+						<md-icon class="material-icons">info</md-icon>
+					</md-button>
+					<md-button aria-label="Discussion" href="https://extranet.groupm.com/sites/Cross-Client-Reporting" class="md-icon-button"
+						target="_blank">
+						<md-tooltip md-direction="top">discussion</md-tooltip>
+						<md-icon class="material-icons">forum</md-icon>
+					</md-button>
+				</div>
+			</md-toolbar>
+
+			<!-- Content -->
+			<md-content layout-padding>
+				<div style="margin-bottom:20px;">
+					These reports are primarily designed for media planning teams to monitor the rate of trafficking against campaign plans.
+					Summary reports and detailed reports are separated into three different workbooks. Click on the links below to download
+					the reports.
+				</div>
+				<div>
+					<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Pacing%20Reports%20-%20Summary%20-%202.0_UAT.xlsm">
+						<md-tooltip md-direction="top">Prisma, DFA, Sizmek, DoubleVerify, Moat</md-tooltip>
+						<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Summary Reports
+					</md-button>
+				</div>
+				<div>
+					<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Pacing%20Reports%20-%20Delivery%20Period%20-%202.0_UAT.xlsm">
+						<md-tooltip md-direction="top">Prisma, DFA, Sizmek, DoubleVerify, Moat</md-tooltip>
+						<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Detailed Reports – By Delivery Period
+					</md-button>
+				</div>
+				<div>
+					<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Pacing%20Reports%20-%20Granular%20-%202.0_UAT.xlsm">
+						<md-tooltip md-direction="top">Prisma, DFA, Sizmek, DoubleVerify, Moat</md-tooltip>
+						<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Detailed Reports – By Granularity
+					</md-button>
+				</div>
+				<div>
+					<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Pacing%20Reports%20-%20Placement%20by%20Date%20-%202.0_UAT.xlsm">
+						<md-tooltip md-direction="top">Prisma, DFA, Sizmek, DoubleVerify, Moat</md-tooltip>
+						<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Detailed Reports – Placement by Date
+					</md-button>
+				</div>
+			</md-content>
+
+		</div>
+	</md-content>
+	<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-1dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<md-icon class="material-icons dap-mgr-6">timeline</md-icon>
+					<h2>Performance Reports</h2>
+					<span flex></span>
+					<md-button aria-label="Info" ng-click="$ctrl.info('performance', $event)" class="md-icon-button dap-nomargin">
+						<md-tooltip md-direction="top">more details</md-tooltip>
+						<md-icon class="material-icons">info</md-icon>
+					</md-button>
+					<md-button aria-label="Discussion" href="https://extranet.groupm.com/sites/Cross-Client-Reporting" class="md-icon-button"
+						target="_blank">
+						<md-tooltip md-direction="top">discussion</md-tooltip>
+						<md-icon class="material-icons">forum</md-icon>
+					</md-button>
+				</div>
+			</md-toolbar>
+
+			<!-- Content -->
+			<md-content layout-padding>
+				<div style="margin-bottom:20px;">
+					These reports present delivered units and spend by campaign, placement, creative, delivery period, site, and inventory. Summary
+					reports and detailed reports are separated into three different workbooks. Click on the links below to download the
+					reports.
+				</div>
+				<div>
+					<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Performance%20Reports%20-%20Summary%20-%202.0_UAT.xlsm">
+						<md-tooltip md-direction="top">Prisma, DFA, Sizmek, DoubleVerify, Moat</md-tooltip>
+						<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Summary Reports
+					</md-button>
+				</div>
+				<div>
+					<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Performance%20Reports%20-%20Delivery%20Period%20-%202.0_UAT.xlsm">
+						<md-tooltip md-direction="top">Prisma, DFA, Sizmek, DoubleVerify, Moat</md-tooltip>
+						<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Detailed Reports – By Delivery Period
+					</md-button>
+				</div>
+				<div>
+					<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Performance%20Reports%20-%20Granular%20-%202.0_UAT.xlsm">
+						<md-tooltip md-direction="top">Prisma, DFA, Sizmek, DoubleVerify, Moat</md-tooltip>
+						<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Detailed Reports – By Granularity
+					</md-button>
+				</div>
+				<div>
+					<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Performance%20Reports%20-%20Placement%20by%20Date%20-%202.0_UAT.xlsm">
+						<md-tooltip md-direction="top">Prisma, DFA, Sizmek, DoubleVerify, Moat</md-tooltip>
+						<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Detailed Reports – Placement by Date
+					</md-button>
+				</div>
+			</md-content>
+
+		</div>
+	</md-content>
+	<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-1dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<md-icon class="material-icons dap-mgr-6">warning</md-icon>
+					<h2>Exception Reports</h2>
+					<span flex></span>
+					<md-button aria-label="Info" ng-click="$ctrl.info('error', $event)" class="md-icon-button dap-nomargin">
+						<md-tooltip md-direction="top">more details</md-tooltip>
+						<md-icon class="material-icons">info</md-icon>
+					</md-button>
+					<md-button aria-label="Discussion" href="https://extranet.groupm.com/sites/Cross-Client-Reporting" class="md-icon-button"
+						target="_blank">
+						<md-tooltip md-direction="top">discussion</md-tooltip>
+						<md-icon class="material-icons">forum</md-icon>
+					</md-button>
+				</div>
+			</md-toolbar>
+
+			<!-- Content -->
+			<md-content layout-padding>
+				<div style="margin-bottom:20px;">
+					Exception reports highlight records that may require some attention from media planning teams. If spend or other measures
+					in CCR’s report don’t match expectations, end users may want to check here to cross-reference CCR’s more granular data
+					against other data sources.
+				</div>
+				<md-button class="md-accent md-hue-3" href="https://ccr-uat.groupm.com/Templates/Exception%20Reports%20-%202.0_UAT.xlsm">
+					<img src="content/images/icon_1_excel_x16.png" style="vertical-align: middle;"> Exception Reports
+				</md-button>
+			</md-content>
+
+		</div>
+	</md-content>
+</div>

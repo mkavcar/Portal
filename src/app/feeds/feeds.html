@@ -1,0 +1,73 @@
+<div layout="row">
+
+	<!--TBD: make generic component-->
+	<md-sidenav flex class="md-sidenav-left" md-component-id="left" md-is-locked-open="true" md-disable-backdrop md-whiteframe="4"
+		style="z-index:59;max-width: 300px;">
+
+		<md-list style="padding-top:0;padding-bottom:0;">
+			<!--level 0-->
+			<md-list-item class="noright" md-colors="{background: $ctrl.selectedColor(0)}" ng-click="$ctrl.selectedCat0ID = $ctrl.selectedCat1ID = 0">
+				<p>All Feeds <span class="dap-badge" ng-if="$ctrl.feeds.length">{{ ::$ctrl.feeds.length }}</span></p>
+			</md-list-item>
+			<div ng-repeat="category in $ctrl.categories">
+				<md-list-item class="noright" md-colors="{background: $ctrl.selectedColor(category.id)}" ng-click="$ctrl.selectedCat0ID = category.id; $ctrl.selectedCat1ID = 0">
+					<div flex layout="row">
+						<div flex>{{ ::category.name }} <span class="dap-badge">{{ ::category.feedCount }}</span></div>
+						<md-button class="md-icon-button" ng-click="$ctrl.toggle(category)" style="min-width: 1%;margin: 0;">
+							<md-icon class="material-icons">{{ category.isExpanded === true ? 'expand_less' : 'expand_more' }}</md-icon>
+						</md-button>
+					</div>
+				</md-list-item>
+				<!--level 1-->
+				<md-list ng-show="category.isExpanded === true" class="menu-toggle-list">
+					<md-list-item md-colors="{background: $ctrl.selectedColor(category.id, subcategory.id)}" ng-repeat="subcategory in category.categories"
+						class="noright" ng-click="$ctrl.selectedCat1ID = subcategory.id; $ctrl.selectedCat0ID = 0">
+						<p style="padding-left: 16px;">{{ ::subcategory.name }} <span class="dap-badge">{{ ::subcategory.feedCount }}</span></p>
+					</md-list-item>
+				</md-list>
+			</div>
+		</md-list>
+		<dap-list-loading flex list="$ctrl.categories"></dap-list-loading>
+
+	</md-sidenav>
+
+	<md-content flex layout-padding md-colors="::{'background-color': 'background-200'}" style="padding:16px;">
+		<div class="md-whiteframe-2dp dap-nopadding">
+
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<h2>Data Feeds</h2>
+				</div>
+			</md-toolbar>
+
+			<md-content md-colors="::{background: 'primary-400'}" style="padding: 0 8px;">
+				<md-input-container md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+					<md-icon class="material-icons md-accent">search</md-icon>
+					<input ng-model="$ctrl.search" placeholder="Search" ng-model-options="{ debounce: 100 }" type="text" md-colors="::{color: 'accent-A100'}"
+						aria-label="Search">
+				</md-input-container>
+			</md-content>
+			<md-content layout-xs="column" layout="row" layout-align="left" layout-wrap style="padding:8px">
+
+				<md-card ng-repeat="feed in $ctrl.feeds | filter: $ctrl.filter as filteredList track by feed.id" style="width:270px;" class="md-whiteframe-2dp">
+					<md-card-title style="padding:0;">
+						<md-card-title-media style="margin:0;outline:0;cursor:pointer;" ng-click="$ctrl.select(feed)">
+							<img class="md-card-image" ng-src="{{::feed.imageURL}}" style="width: 87px;height: 48px!important;-webkit-clip-path: inset(3%);clip-path: inset(3%);">
+						</md-card-title-media>
+						<md-card-title-text style="padding:5px 0 5px 10px;outline:0;cursor:pointer;" ng-click="$ctrl.select(feed)">
+							<div>{{::feed.name}}</div>
+							<div class="md-subhead">{{::feed.catName0}}</div>
+						</md-card-title-text>
+						<md-button class="md-icon-button md-primary md-hue-1" ng-click="$ctrl.info(feed, $event)" style="min-width: 1%;margin: 0;">
+							<md-icon class="material-icons">info</md-icon>
+						</md-button>
+					</md-card-title>
+				</md-card>
+				<dap-list-loading flex list="$ctrl.feeds" filteredlist="filteredList"></dap-list-loading>
+
+			</md-content>
+
+		</div>
+	</md-content>
+
+</div>

@@ -1,0 +1,45 @@
+<!-- Header -->
+<md-toolbar class="md-accent md-hue-3">
+	<div class="md-toolbar-tools">
+		<h2>Share</h2>
+		<span flex></span>
+		<md-button class="md-icon-button" ng-click="$ctrl.close()">
+			<md-icon class="material-icons">clear</md-icon>
+		</md-button>
+	</div>
+</md-toolbar>
+
+<!-- Content -->
+<div layout="column">
+
+	<!-- Add Role -->
+	<div layout="row" md-colors="::{background: 'accent-A200'}" style="padding-left:14px;">
+		<md-input-container flex md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+			<md-icon class="material-icons" md-colors="::{color: 'background-700'}">account_circle</md-icon>
+			<input ng-model="$ctrl.user" placeholder="User's Email Address (john.doe@groupm.com)" aria-label="user" type="email">
+		</md-input-container>
+		<md-button style="width:80px;" class="md-raised md-accent md-hue-3" ng-disabled="!$ctrl.user" ng-click="$ctrl.add()">Add</md-button>
+	</div>
+
+	<!-- List -->
+	<md-content style="max-height: 450px;">
+		<md-list class="dap-nopadding">
+			<md-list-item ng-if="$ctrl.users" ng-repeat-start="item in $ctrl.users" class="secondary-button-padding">
+				<p>
+					<md-icon class="material-icons" style="margin-right: 8px;">account_circle</md-icon>{{::item}}
+				</p>
+				<md-button class="md-secondary md-icon-button" ng-click="$ctrl.remove(item)">
+					<md-icon class="material-icons">clear</md-icon>
+				</md-button>
+			</md-list-item>
+			<md-divider ng-repeat-end></md-divider>
+		</md-list>
+		<dap-list-loading flex list="$ctrl.users"></dap-list-loading>
+	</md-content>
+</div>
+
+<!-- Actions -->
+<md-dialog-actions layout="row">
+	<md-button class="md-raised" ng-click="$ctrl.close()">Cancel</md-button>
+	<md-button class="md-raised md-accent md-hue-3" ng-click="$ctrl.save()" ng-disabled="!$ctrl.users">Save</md-button>
+</md-dialog-actions>

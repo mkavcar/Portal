@@ -1,0 +1,131 @@
+<div layout-gt-sm="row">
+
+	<!-- Users -->
+	<md-content layout-padding flex md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-2dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<h2>Users</h2>
+					<span flex></span>
+					<md-button ng-click="$ctrl.edit(null, $event)">
+						<md-icon class="material-icons dap-mgr-6">add</md-icon>Add User
+					</md-button>
+				</div>
+			</md-toolbar>
+
+			<!-- Filter -->
+			<md-content flex md-colors="::{background: 'primary-400'}" style="padding: 0 8px;">
+				<md-input-container md-no-float class="md-accent md-block md-input-has-placeholder md-icon-left dap-search-input">
+					<md-icon class="material-icons md-accent">search</md-icon>
+					<input ng-model="$ctrl.search" placeholder="Search" ng-model-options="{ debounce: 100 }" type="text" md-colors="::{color: 'accent-A100'}"
+						aria-label="Search">
+				</md-input-container>
+			</md-content>
+
+			<!-- Content -->
+			<md-content flex>
+				<div layout="row" md-colors="::{background: 'background-400'}">
+					<div flex="35" style="padding:20px">
+						<label>User ID</label>
+					</div>
+					<div flex style="padding:20px">
+						<label>Roles</label>
+					</div>
+					<div align="center" style="padding:20px;width:60px;">
+						<label>Type</label>
+					</div>
+					<div align="center" style="padding:20px;width:80px;">
+						<label>Actions</label>
+					</div>
+				</div>
+				<md-divider></md-divider>
+				<div ng-repeat="item in $ctrl.users | filter: $ctrl.filter as filteredList track by item.id">
+					<div flex layout="row">
+						<div flex="35" style="padding:10px 20px;margin:auto;word-break:break-all;">
+							{{:: (item.firstName + item.lastName) ? item.firstName + ' ' + item.lastName : item.id }}
+							<div class="md-caption" ng-if=":: (item.firstName + item.lastName)">{{:: item.id }}</div>
+						</div>
+						<div flex class="dap-center" style="padding:0 15px">
+							{{:: item.roles.join(', ' )}}
+						</div>
+						<div align="center" style="margin:auto;width:100px;">
+							{{:: item.type}}
+						</div>
+						<div align="center" style="margin:auto;width:120px;">
+							<md-button class="md-icon-button" ng-click="$ctrl.edit(item, $event)" style="margin:0">
+								<md-tooltip md-direction="top">edit</md-tooltip>
+								<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">edit</md-icon>
+							</md-button>
+							<md-button class="md-icon-button" ng-click="$ctrl.remove(item, $event)" style="margin:0">
+								<md-tooltip md-direction="top">delete</md-tooltip>
+								<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">delete</md-icon>
+							</md-button>
+						</div>
+					</div>
+					<md-divider ng-if="!$last"></md-divider>
+				</div>
+				<dap-list-loading flex list="$ctrl.users" filteredlist="filteredList"></dap-list-loading>
+			</md-content>
+		</div>
+
+	</md-content>
+
+	<!-- Roles -->
+	<md-content layout-padding flex-gt-sm="25" md-colors="::{'background-color': 'background-200'}" style="padding:8px;">
+		<div class="md-whiteframe-2dp dap-nopadding">
+
+			<!-- Header -->
+			<md-toolbar class="md-accent md-hue-3">
+				<div class="md-toolbar-tools">
+					<h2>Roles</h2>
+				</div>
+			</md-toolbar>
+
+
+			<!-- Add Role -->
+			<md-content flex md-colors="::{background: 'primary-400'}" style="padding: 0 8px;">
+				<div layout="row">
+					<md-input-container flex md-no-float class="md-accent md-block md-input-has-placeholder dap-search-input">
+						<input ng-model="$ctrl.role" placeholder="Add Role" type="text" md-colors="::{color: 'accent-A100'}" aria-label="Role">
+					</md-input-container>
+					<md-button style="min-width:1px;margin:0" ng-disabled="!$ctrl.role" ng-click="$ctrl.addRole($ctrl.role)">
+						<md-tooltip md-direction="top">add</md-tooltip>
+						<md-icon class="material-icons">add</md-icon>
+					</md-button>
+				</div>
+			</md-content>
+
+			<!-- Content -->
+			<md-content flex>
+				<div layout="row" md-colors="::{background: 'background-400'}">
+					<div flex style="padding:20px">
+						<label>Role</label>
+					</div>
+					<div align="center" style="padding:20px;width:50px;">
+						<label>Delete</label>
+					</div>
+				</div>
+				<md-divider></md-divider>
+				<div ng-repeat="item in $ctrl.roles">
+					<div layout="row">
+						<div flex style="padding:15px 20px 14px 20px;margin:auto;word-break:break-all;">
+							{{:: item }}
+						</div>
+						<div align="center" class="dap-vertalign" style="width:90px;">
+							<md-button class="md-icon-button" ng-click="$ctrl.removeRole(item, $event)" style="margin:0">
+								<md-tooltip md-direction="top">delete</md-tooltip>
+								<md-icon class="material-icons" md-colors="::{color: 'accent-A400'}">delete</md-icon>
+							</md-button>
+						</div>
+					</div>
+					<md-divider ng-if="!$last"></md-divider>
+				</div>
+				<dap-list-loading flex list="$ctrl.roles"></dap-list-loading>
+			</md-content>
+
+		</div>
+	</md-content>
+
+</div>

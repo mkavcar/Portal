@@ -1,0 +1,15 @@
+<div ng-if="$ctrl.list === null || ($ctrl.list !== null && ($ctrl.list.length === 0 || ($ctrl.filteredlist || [0]).length === 0))"
+	layout="row" md-colors="::{color: 'background-700'}" style="padding:60px 0;">
+
+	<!-- Loader -->
+	<div ng-if="$ctrl.list === null" layout="row" style="margin:auto">
+		<md-progress-circular flex class="md-accent md-hue-3" md-mode="indeterminate"></md-progress-circular>
+		<div flex style="margin: auto;margin-left: 20px;" md-colors="::{'color': 'background-800'}">Loading...</div>
+	</div>
+
+	<!-- Not Found Message -->
+	<div ng-if="$ctrl.list !== null && ($ctrl.list.length === 0 || ($ctrl.filteredlist || [0]).length === 0)" class="md-subhead"
+		style="margin:auto">
+		<md-icon class="material-icons" style="font-size: 34px;width: 34px;height: 34px;margin-bottom: 4px;margin-right:6px;">block</md-icon>{{:: ($ctrl.notFoundMessage || 'No items found') }}
+	</div>
+</div>
